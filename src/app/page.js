@@ -115,20 +115,29 @@ export default function Home() {
       </section>
 
       {/* Método OPR */}
-      <section id="metodo" className="mx-auto max-w-3xl px-6 py-20">
+      <section id="metodo" className="mx-auto max-w-4xl px-6 py-20">
         <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
           Método OPR
         </span>
         <h2 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-          O Método OPR: Organização, Processos e Resultados.
+          Organização, Processos e Resultados.
         </h2>
+
         <blockquote className="mt-6 border-l-4 border-cyan-200 pl-6 text-lg italic text-slate-600">
-          Como escreveu Friedrich Nietzsche, &ldquo;Quem tem um porquê
-          enfrenta qualquer como&rdquo;. O nosso software é a ferramenta que
-          estrutura o seu &ldquo;como&rdquo;, trazendo disciplina tática para
-          que você alcance os resultados que motivaram a abertura do seu
-          negócio.
+          Como escreveu Friedrich Nietzsche, "Quem tem um porquê enfrenta qualquer como". O nosso software é a ferramenta que estrutura o seu "como", trazendo disciplina tática para que você alcance os resultados que motivaram a abertura do seu negócio.
         </blockquote>
+
+        <div className="mt-10 space-y-6 text-lg leading-relaxed text-slate-600">
+          <p>
+            A desordem física de uma operação é, antes de tudo, um reflexo do caos que prevalece na mente de quem a lidera. Somente em um ambiente organizado com propósito e energia é possível sustentar processos que realmente elevem a produtividade.
+          </p>
+          <p>
+            O Método OPR integra a filosofia de trabalho do 5S para colocar pessoas e ambiente em total sintonia. A Inteligência Artificial e as ferramentas tecnológicas avançadas só prosperam quando essa harmonia já está estabelecida.
+          </p>
+          <p className="font-medium text-slate-900">
+            É como preparar a terra: se o solo for inapropriado, nem a melhor semente do mundo vinga. Nós preparamos o seu terreno para o crescimento.
+          </p>
+        </div>
       </section>
 
       {/* Esteira de produtos */}
