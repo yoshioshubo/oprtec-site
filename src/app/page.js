@@ -1,69 +1,179 @@
 import Image from "next/image";
 
+const dores = [
+  {
+    titulo: "Estoque no caderno",
+    descricao:
+      "Contagens feitas no caderno ou em planilhas que quebram toda semana, sem visibilidade real do que entra e do que sai.",
+  },
+  {
+    titulo: "Madrugadas fechando caixa",
+    descricao:
+      "O fechamento do dia consome horas da madrugada — tempo que deveria estar com a família ou descansando.",
+  },
+  {
+    titulo: "Sem DRE atualizado",
+    descricao:
+      "Decisões tomadas no feeling, porque o DRE só aparece (quando aparece) semanas depois do fechamento do mês.",
+  },
+];
+
+const esteira = [
+  {
+    nivel: "1",
+    nome: "Card de Reservas Automático",
+    descricao:
+      "Controle inicial e aumento de percepção de valor, com zero atrito para implantar.",
+  },
+  {
+    nivel: "2",
+    nome: "Dashboard de KPIs Integrado",
+    descricao:
+      "Leitura inteligente dos dados que já saem do seu PDV atual, sem trocar de sistema.",
+  },
+  {
+    nivel: "3",
+    nome: "Sistema OPR Tec Completo",
+    descricao:
+      "Gestão integrada de ponta a ponta, com baixa de estoque técnica automática.",
+  },
+];
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div>
+      {/* Hero */}
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-8 sm:pb-28 sm:pt-10">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
+              <span className="h-2 w-2 rounded-full bg-cyan-500" />
+              Para bares e restaurantes que buscam resultados reais.
+            </span>
+
+            <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Transforme a complexidade operacional em{" "}
+              <span className="text-cyan-600">clareza, disciplina e lucro</span>
+              .
+            </h1>
+
+            <p className="mt-6 max-w-xl text-lg text-slate-600">
+              Converta o caos do dia a dia em resultados previsíveis. Nossa
+              tecnologia atua direto na organização e nos processos do seu
+              negócio, sem exigir que você seja um especialista.
+            </p>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="https://tally.so/r/yPbQ0g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-cyan-600 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
+              >
+                Analisar Minha Operação
+              </a>
+              <a
+                href="#metodo"
+                className="rounded-full border border-slate-300 px-6 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
+              >
+                Como funciona o método
+              </a>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/60">
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              src="/hero-mockup.png"
+              alt="Dashboard de KPIs em notebook e celular sobre o balcão de um bar"
+              width={2752}
+              height={1536}
+              className="h-full w-full object-cover"
+              priority
             />
-            Deploy Now
-          </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Agitação da dor */}
+      <section className="border-t border-slate-100 bg-slate-50">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="text-center text-3xl font-bold text-slate-900 sm:text-4xl">
+            Sua cozinha funciona, mas o dinheiro não sobra?
+          </h2>
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {dores.map((dor) => (
+              <div
+                key={dor.titulo}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <h3 className="font-semibold text-slate-900">{dor.titulo}</h3>
+                <p className="mt-2 text-sm text-slate-600">{dor.descricao}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Método OPR */}
+      <section id="metodo" className="mx-auto max-w-3xl px-6 py-20">
+        <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
+          Método OPR
+        </span>
+        <h2 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+          O Método OPR: Organização, Processos e Resultados.
+        </h2>
+        <blockquote className="mt-6 border-l-4 border-cyan-200 pl-6 text-lg italic text-slate-600">
+          Como escreveu Friedrich Nietzsche, &ldquo;Quem tem um porquê
+          enfrenta qualquer como&rdquo;. O nosso software é a ferramenta que
+          estrutura o seu &ldquo;como&rdquo;, trazendo disciplina tática para
+          que você alcance os resultados que motivaram a abertura do seu
+          negócio.
+        </blockquote>
+      </section>
+
+      {/* Esteira de produtos */}
+      <section className="border-t border-slate-100 bg-slate-50">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+            Uma esteira de soluções, do primeiro passo à gestão completa
+          </h2>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {esteira.map((item) => (
+              <div
+                key={item.nivel}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <span className="inline-flex items-center gap-1 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 ring-1 ring-inset ring-cyan-200">
+                  Nível {item.nivel}
+                </span>
+                <h3 className="mt-3 font-semibold text-slate-900">
+                  {item.nome}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  {item.descricao}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="bg-slate-900">
+        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            Descubra qual solução é ideal para o seu momento.
+          </h2>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://tally.so/r/yPbQ0g"
             target="_blank"
             rel="noopener noreferrer"
+            className="mt-8 inline-block rounded-full bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
           >
-            Documentation
+            Analisar Minha Operação
           </a>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
