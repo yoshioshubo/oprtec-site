@@ -1,10 +1,10 @@
-import Image from "next/image";
+import HeroGallery from "@/components/HeroGallery";
 
 const dores = [
   {
     titulo: "Estoque no caderno",
     descricao:
-      "Contagens feitas no caderno ou em planilhas que quebram toda semana, sem visibilidade real do que entra e do que sai.",
+      "Fichas técnicas mortas em um arquivo em excel, enquanto o seu cozinheiro vai mudando a receita pouco a pouco.",
   },
   {
     titulo: "Madrugadas fechando caixa",
@@ -81,16 +81,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/60">
-            <Image
-              src="/hero-mockup.png"
-              alt="Dashboard de KPIs em notebook e celular sobre o balcão de um bar"
-              width={2752}
-              height={1536}
-              className="h-full w-full object-cover"
-              priority
-            />
-          </div>
+          <HeroGallery />
         </div>
       </section>
 
