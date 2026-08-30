@@ -54,8 +54,8 @@ export const produtos = [
     nome: "Avaliação Cliente",
     resumo: "Cliente insatisfeito não reclama no balcão — ele só não volta mais.",
     descricao:
-      "Em breve você vai poder capturar a avaliação de cada cliente automaticamente e agir antes que o silêncio vire uma mesa vazia.",
-    disponivel: false,
+      "Um app próprio captura a avaliação de cada cliente automaticamente e consolida a nota média, para você agir antes que o silêncio vire uma mesa vazia.",
+    disponivel: true,
   },
   {
     slug: "check-list",
@@ -122,29 +122,42 @@ export const produtos = [
     disponivel: false,
   },
   {
-    slug: "avaliacao-redes-sociais",
-    nome: "Avaliação Redes Sociais",
+    slug: "controle-de-contratos",
+    nome: "Controle de Contratos",
+    tags: ["Vencimentos", "Análise Crítica", "Alarmes WhatsApp"],
     resumo:
-      "A reputação do seu restaurante já está sendo decidida nas redes — a pergunta é se você está acompanhando.",
+      "Contrato que vence sem ninguém perceber é multa, reajuste perdido ou renovação automática que ninguém queria.",
     descricao:
-      "Em breve, um painel consolidado de avaliações e menções nas redes sociais para você agir rápido antes que um comentário vire uma crise.",
-    disponivel: false,
+      "Um painel de vencimentos com alarmes automáticos por WhatsApp, análise crítica de multas e cláusulas sensíveis, e histórico completo de alterações — para nenhum prazo pegar você de surpresa de novo.",
+    disponivel: true,
   },
   {
     slug: "concessionarias",
     nome: "Concessionárias",
+    tags: ["Água", "Energia", "Gás"],
     resumo: "Água, luz e gás pesam na conta — mas quase ninguém acompanha isso de perto.",
     descricao:
-      "Em breve, o controle de concessionárias organiza consumo e custo dos serviços essenciais da sua operação, para você identificar desperdício antes que ele vire boleto.",
-    disponivel: false,
+      "O controle de concessionárias organiza consumo e custo dos serviços essenciais da sua operação, com leitura diária opcional via WhatsApp, para você identificar desperdício antes que ele vire boleto.",
+    disponivel: true,
   },
   {
     slug: "mapa-de-manutencao",
     nome: "Mapa de Manutenção",
+    tags: ["Chamados", "Orçamentos", "Fornecedores", "SLA"],
     resumo:
       "Equipamento que quebra no meio do serviço custa muito mais do que a manutenção que você adiou.",
     descricao:
-      "Em breve, um mapa de manutenção preventiva evita que geladeira, forno e chapa parem justamente no dia de maior movimento.",
-    disponivel: false,
+      "Um mapa de manutenção com chamados, orçamentos e SLA por fornecedor evita que geladeira, forno e chapa parem justamente no dia de maior movimento.",
+    disponivel: true,
+  },
+  {
+    slug: "fluxo-de-caixa",
+    nome: "Fluxo de Caixa",
+    tags: ["Contas", "Saldos", "Transferências"],
+    resumo:
+      "Saber que vendeu bem não paga boleto — só o saldo de caixa de verdade paga.",
+    descricao:
+      "Controle de contas bancárias, saldo inicial, transferências entre contas e a saída de cada pagamento — para você nunca mais ser pego de surpresa por um caixa que parecia cheio e não estava.",
+    disponivel: true,
   },
 ];
