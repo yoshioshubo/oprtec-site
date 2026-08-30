@@ -15,6 +15,12 @@ export default function Footer() {
           <Link href="/contato" className="hover:text-slate-900">
             Contato
           </Link>
+          <Link href="/termos" className="hover:text-slate-900">
+            Termos de Uso
+          </Link>
+          <Link href="/privacidade" className="hover:text-slate-900">
+            Privacidade
+          </Link>
         </div>
       </div>
     </footer>

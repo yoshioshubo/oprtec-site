@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Sobre — OPRtec",
 };
@@ -23,15 +25,23 @@ const valores = [
 
 export default function SobrePage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-20">
-      <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
-        Sobre
-      </span>
-      <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
-        Por trás da OPRtec
-      </h1>
+    <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <section className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
+            Sobre a OPRtec
+          </span>
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            Organização, a base para obter resultados.
+          </h1>
+        </div>
+        <p className="max-w-md text-lg leading-8 text-justify text-slate-600 lg:justify-self-end">
+          Experiência prática, método e tecnologia para transformar operações
+          de alimentação em negócios mais leves, consistentes e rentáveis.
+        </p>
+      </section>
 
-      <div className="mt-8 space-y-4 text-slate-600">
+      <section className="mt-14 max-w-4xl border-l-2 border-cyan-500 pl-6 text-lg leading-8 text-justify text-slate-700 sm:pl-8">
         <p>
           Formado em Engenharia de Produção, com mais de 25 anos de
           experiência em gestão de empresas — passando por multinacionais e
@@ -42,6 +52,18 @@ export default function SobrePage() {
           bares, restaurantes, hamburguerias, pizzarias, comida japonesa,
           confeitarias e A&amp;B do setor hoteleiro, entre outros.
         </p>
+      </section>
+
+      <section className="mt-16 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-widest text-cyan-600">
+            O método OPR
+          </p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-900">
+            O ponto de partida é colocar a casa em ordem.
+          </h2>
+        </div>
+        <div className="space-y-4 text-justify text-slate-600">
         <p>
           Durante esse processo de aprendizagem, compreendi que a maior
           dificuldade para o alcance dos resultados pretendidos passava pela
@@ -60,14 +82,16 @@ export default function SobrePage() {
           mas também os resultados que levam à saúde e ao bem-estar dentro
           da empresa, dentro de casa e na vida social do empreendedor. Nosso
           objetivo é fazer a vida prevalecer com abundância, para que a
-          empresa seja apenas a parte em que o ser humano possa satisfazer
-          suas necessidades mundanas. O uso da inteligência artificial é
+          empresa seja apenas a parte que o empresário possa satisfazer
+          suas necessidades mundanas e não um peso a ser carregado. O uso da inteligência artificial é
           somente uma ferramenta de otimização de tempo, que permite ao
-          empresário manter o foco na estratégia e no propósito de sua vida.
+          empresário manter o foco na estratégia e no propósito de sua vida. É essencial que a organização
+          e a limpeza sejam levadas a sério, pois são a base para o sucesso de qualquer empreendimento.
         </p>
-      </div>
+        </div>
+      </section>
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2">
+      <section className="mt-16 grid gap-6 sm:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-cyan-600">
             Visão
@@ -83,17 +107,18 @@ export default function SobrePage() {
             Missão
           </h2>
           <p className="mt-3 text-slate-700">
-            Transformar a complexidade operacional em clareza, disciplina e
-            resultados previsíveis.
+            Reduza custos e coloque dinheiro no bolso!
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="mt-6">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-cyan-600">
-          Valores
-        </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <section className="mt-16 rounded-3xl bg-gradient-to-br from-cyan-50 via-slate-50 to-slate-50 p-8 sm:p-12">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-cyan-700 shadow-sm ring-1 ring-inset ring-cyan-200">
+            Valores
+          </span>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {valores.map((valor) => (
             <div
               key={valor.nome}
@@ -104,7 +129,24 @@ export default function SobrePage() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
+
+      <section className="mt-16 flex flex-col gap-5 rounded-2xl bg-slate-900 p-8 text-white sm:flex-row sm:items-center sm:justify-between sm:p-10">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-widest text-cyan-300">
+            Próximo passo
+          </p>
+          <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
+            Sua operação pode começar a mudar hoje.
+          </h2>
+        </div>
+        <Link
+          href="/contato"
+          className="inline-flex shrink-0 items-center justify-center rounded-lg bg-cyan-400 px-5 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300"
+        >
+          Fale com a OPRtec <span aria-hidden="true" className="ml-2">→</span>
+        </Link>
+      </section>
     </div>
   );
 }

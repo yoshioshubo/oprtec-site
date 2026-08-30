@@ -2,7 +2,7 @@ import HeroGallery from "@/components/HeroGallery";
 
 const dores = [
   {
-    titulo: "Estoque no caderno",
+    titulo: "CMV nas alturas",
     descricao:
       "Fichas técnicas mortas em um arquivo em excel, enquanto o seu cozinheiro vai mudando a receita pouco a pouco.",
   },
@@ -21,21 +21,21 @@ const dores = [
 const esteira = [
   {
     nivel: "1",
-    nome: "Card de Reservas Automático",
+    nome: "Nível Maturidade Júnior",
     descricao:
-      "Controle inicial e aumento de percepção de valor, com zero atrito para implantar.",
+      "É o momento de tirar a empresa do piloto automático. Você começa a enxergar o negócio com clareza, dá o primeiro passo para transformar a intuição em método e planta as bases de uma operação que vai além da correria do dia a dia.",
   },
   {
     nivel: "2",
-    nome: "Dashboard de KPIs Integrado",
+    nome: "Nível Maturidade Pleno",
     descricao:
-      "Leitura inteligente dos dados que já saem do seu PDV atual, sem trocar de sistema.",
+      "A casa já está em ordem e agora é hora de ganhar profundidade. Você passa a acompanhar de perto cada engrenagem do negócio, antecipa problemas antes que virem prejuízo e conduz a operação com confiança, não mais no improviso.",
   },
   {
     nivel: "3",
-    nome: "Sistema OPR Tec Completo",
+    nome: "Nível Maturidade Sênior",
     descricao:
-      "Gestão integrada de ponta a ponta, com baixa de estoque técnica automática.",
+      "Sua empresa opera com a precisão de um negócio grande de verdade. Processos rodam sozinhos, decisões são tomadas com dado na mão, e você finalmente tem tempo e liberdade para pensar estratégia — não só apagar incêndio.",
   },
 ];
 
@@ -52,9 +52,9 @@ export default function Home() {
             </span>
 
             <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-              Transforme a complexidade operacional em{" "}
-              <span className="text-cyan-600">clareza, disciplina e lucro</span>
-              .
+              <span className="text-cyan-600">ORGANIZE</span> o seu
+              restaurante e comece a ver a cor do{" "}
+              <span className="text-cyan-600">DINHEIRO</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-slate-600">
@@ -68,9 +68,9 @@ export default function Home() {
                 href="https://tally.so/r/yPbQ0g"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-cyan-600 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
+                className="cta-pulse rounded-full bg-cyan-600 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
               >
-                Analisar Minha Operação
+                Agende uma Avaliação Gratuita
               </a>
               <a
                 href="#metodo"
@@ -115,7 +115,7 @@ export default function Home() {
         </h2>
 
         <blockquote className="mt-6 border-l-4 border-cyan-200 pl-6 text-lg italic text-slate-600">
-          Como escreveu Friedrich Nietzsche, "Quem tem um porquê enfrenta qualquer como". O nosso software é a ferramenta que estrutura o seu "como", trazendo disciplina tática para que você alcance os resultados que motivaram a abertura do seu negócio.
+          Como escreveu Friedrich Nietzsche, "Quem tem um porquê enfrenta qualquer como". O nosso método vai além da tecnologia com IA e permeia a filosofia estoica, levando o empresário à compreensão de seu propósito e do porquê de fazer o que deve ser feito.
         </blockquote>
 
         <div className="mt-10 space-y-6 text-lg leading-relaxed text-slate-600">
@@ -127,6 +127,44 @@ export default function Home() {
           </p>
           <p className="font-medium text-slate-900">
             É como preparar a terra: se o solo for inapropriado, nem a melhor semente do mundo vinga. Nós preparamos o seu terreno para o crescimento.
+          </p>
+          <p>
+            Na OPRtec, acreditamos que cada negócio tem seu tempo. Ao
+            preencher o diagnóstico{" "}
+            <a
+              href="https://tally.so/r/yPbQ0g"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-cyan-600 hover:text-cyan-700"
+            >
+              &ldquo;Agende uma Avaliação Gratuita&rdquo;
+            </a>
+            , identificamos o nível de maturidade da sua empresa para
+            direcionar exatamente as soluções que você precisa agora. Nosso
+            compromisso é com o seu resultado prático: não vendemos
+            ferramentas que a sua operação ainda não tem estrutura para
+            absorver.
+          </p>
+          <p>
+            Dividimos a jornada empresarial em três estágios: Júnior, Pleno e
+            Sênior. Cada nível destrava o acesso a um conjunto específico de
+            soluções.
+          </p>
+          <p>
+            Se o seu objetivo é estruturar a sua organização e subir de
+            nível, oferecemos consultoria personalizada para preparar o
+            terreno para o seu crescimento. E para continuarmos guiando sua
+            jornada, confira nossos vídeos no YouTube{" "}
+            <a
+              href="https://www.youtube.com/@yoshioshubo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-cyan-600 hover:text-cyan-700"
+            >
+              @yoshioshubo
+            </a>{" "}
+            com reflexões e estratégias práticas que norteiam a rotina de
+            quem empreende.
           </p>
         </div>
       </section>
@@ -143,10 +181,7 @@ export default function Home() {
                 key={item.nivel}
                 className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
               >
-                <span className="inline-flex items-center gap-1 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 ring-1 ring-inset ring-cyan-200">
-                  Nível {item.nivel}
-                </span>
-                <h3 className="mt-3 font-semibold text-slate-900">
+                <h3 className="font-semibold text-slate-900">
                   {item.nome}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">
@@ -170,7 +205,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="mt-8 inline-block rounded-full bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
           >
-            Analisar Minha Operação
+            Agende uma Avaliação Gratuita
           </a>
         </div>
       </section>

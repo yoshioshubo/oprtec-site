@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { produtos } from "@/data/produtos";
 
 export const metadata = {
@@ -15,34 +14,68 @@ export default function ProdutosPage() {
         Produtos à la carte
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-slate-600">
-        Cada produto resolve um problema específico do dia a dia de bares e
-        restaurantes. Contrate só o que faz sentido para a sua realidade agora.
+        Cada módulo resolve um problema específico do dia a dia de bares e
+        restaurantes. Os planos destravam o acesso aos módulos conforme o
+        nível de maturidade da sua operação.
       </p>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {produtos.map((produto) => (
           <div
             key={produto.slug}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+            className={`relative flex flex-col rounded-2xl border p-6 shadow-sm ${
+              produto.disponivel
+                ? "border-slate-200 bg-white"
+                : "border-slate-200 bg-slate-50"
+            }`}
           >
-            <h2 className="text-lg font-semibold text-slate-900">
+            {!produto.disponivel && (
+              <span className="absolute right-4 top-4 rounded-full bg-slate-200 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                Em breve
+              </span>
+            )}
+
+            <h2
+              className={`pr-20 text-lg font-semibold ${
+                produto.disponivel ? "text-slate-900" : "text-slate-500"
+              }`}
+            >
               {produto.nome}
             </h2>
-            <p className="mt-2 text-sm font-medium text-cyan-600">
+
+            {produto.tags && (
+              <p className="mt-1 text-xs text-slate-400">
+                {produto.tags.join(" · ")}
+              </p>
+            )}
+
+            <p
+              className={`mt-3 text-sm font-medium ${
+                produto.disponivel ? "text-cyan-600" : "text-slate-400"
+              }`}
+            >
               {produto.resumo}
             </p>
-            <p className="mt-3 text-sm text-slate-600">{produto.descricao}</p>
+            <p
+              className={`mt-2 flex-1 text-sm ${
+                produto.disponivel ? "text-slate-600" : "text-slate-400"
+              }`}
+            >
+              {produto.descricao}
+            </p>
           </div>
         ))}
       </div>
 
       <div className="mt-16 text-center">
-        <Link
-          href="/contato"
-          className="inline-block rounded-full bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-cyan-700"
+        <a
+          href="https://tally.so/r/yPbQ0g"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-pulse inline-block rounded-full bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
         >
-          Falar sobre o meu bar/restaurante
-        </Link>
+          Agende uma Avaliação Gratuita
+        </a>
       </div>
     </div>
   );
