@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
       shortcut: ["/favicon.ico"],
       apple: [
         {
-          url: "/icon-192x192.png",
+          url: "/apple-touch-icon.png",
           sizes: "180x180",
           type: "image/png",
         },
