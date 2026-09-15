@@ -34,6 +34,33 @@ export async function generateMetadata({ params }) {
   return {
     title: t("title"),
     description: t("description"),
+    metadataBase: new URL("https://www.oprtec.com.br"),
+    icons: {
+      icon: [
+        {
+          url: "/favicon.ico",
+        },
+        {
+          url: "/icon-40x40.png",
+          sizes: "40x40",
+          type: "image/png",
+        },
+        {
+          url: "/icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+      ],
+      shortcut: ["/favicon.ico"],
+      apple: [
+        {
+          url: "/icon-192x192.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+      ],
+    },
+    manifest: "/manifest.json",
   };
 }
 

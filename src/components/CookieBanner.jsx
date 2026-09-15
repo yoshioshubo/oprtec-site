@@ -13,7 +13,9 @@ export default function CookieBanner() {
   useEffect(() => {
     const choice = window.localStorage.getItem(STORAGE_KEY);
     if (!choice) {
-      setVisible(true);
+      const visibilityTimer = window.setTimeout(() => setVisible(true), 0);
+
+      return () => window.clearTimeout(visibilityTimer);
     }
   }, []);
 

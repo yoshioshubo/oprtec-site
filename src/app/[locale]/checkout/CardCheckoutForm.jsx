@@ -28,7 +28,9 @@ export default function CardCheckoutForm({ plano, ciclo = "mensal" }) {
 
   useEffect(() => {
     initMercadoPago(PUBLIC_KEY, { locale: mpLocale });
-    setReady(true);
+    const readyTimer = window.setTimeout(() => setReady(true), 0);
+
+    return () => window.clearTimeout(readyTimer);
   }, [mpLocale]);
 
   const handleSubmit = async (formData) => {
