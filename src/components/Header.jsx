@@ -1,24 +1,34 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const links = [
-  { href: "/", label: "Início" },
-  { href: "/produtos", label: "Produtos" },
-  { href: "/planos", label: "Adquira seu Plano" },
-  { href: "/sobre", label: "Sobre" },
-  { href: "/cases", label: "Cases" },
-  { href: "/contato", label: "Contato" },
-];
+// LanguageSwitcher usa useSearchParams() (pra preservar ?plano=... ao trocar de
+// idioma no checkout) — isso exige um limite de Suspense na geração estática,
+// senão o build quebra em toda página pré-renderizada.
+function LanguageSwitcherFallback({ className }) {
+  return <div className={`h-[26px] w-[92px] ${className || ""}`} />;
+}
 
 export default function Header() {
+  const t = useTranslations("header");
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: "/", label: t("inicio") },
+    { href: "/#metodo", label: t("metodo") },
+    { href: "/produtos", label: t("produtos") },
+    { href: "/sobre", label: t("sobre") },
+    { href: "/cases", label: t("cases") },
+    { href: "/contato", label: t("contato") },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
@@ -30,30 +40,46 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-[16.8px] font-medium text-slate-600 transition-colors hover:text-slate-900"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
+          <nav className="flex gap-6 xl:gap-8">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[16.8px] font-medium text-slate-600 transition-colors hover:text-slate-900"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <Suspense fallback={<LanguageSwitcherFallback />}>
+            <LanguageSwitcher />
+          </Suspense>
+          <Link
+            href="/avaliacao"
+            className="whitespace-nowrap rounded-full bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-cyan-700"
+          >
+            {t("cta")}
+          </Link>
+        </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="text-slate-700 md:hidden"
-          aria-label="Abrir menu"
-        >
-          {open ? "✕" : "☰"}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <Suspense fallback={<LanguageSwitcherFallback />}>
+            <LanguageSwitcher />
+          </Suspense>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="text-slate-700"
+            aria-label={t("abrirMenu")}
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-slate-200 px-6 py-4 md:hidden">
+        <nav className="flex flex-col gap-1 border-t border-slate-200 px-6 py-4 lg:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -64,6 +90,13 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/avaliacao"
+            onClick={() => setOpen(false)}
+            className="mt-2 rounded-full bg-cyan-600 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-cyan-700"
+          >
+            {t("cta")}
+          </Link>
         </nav>
       )}
     </header>

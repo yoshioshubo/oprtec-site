@@ -1,0 +1,610 @@
+{
+  "metadata": {
+    "title": "OPRtec — Gestión inteligente para bares y restaurantes",
+    "description": "Productos de gestión con IA para que dueños de bares y restaurantes reduzcan costos y organicen sus KPIs."
+  },
+  "header": {
+    "inicio": "Inicio",
+    "metodo": "Método",
+    "produtos": "Soluciones",
+    "sobre": "Nosotros",
+    "cases": "Casos",
+    "contato": "Contacto",
+    "abrirMenu": "Abrir menú",
+    "cta": "Agendar evaluación"
+  },
+  "footer": {
+    "direitos": "© {ano} OPRtec — Organización, Procesos y Resultados.",
+    "produtos": "Soluciones",
+    "sobre": "Nosotros",
+    "contato": "Contacto",
+    "termos": "Términos de Uso",
+    "privacidade": "Privacidad"
+  },
+  "termos": {
+    "metaTitle": "Términos de Uso — OPRtec",
+    "badge": "Documentos legales",
+    "titulo": "Términos de Uso",
+    "atualizadoEm": "Última actualización: 23 de agosto de 2026.",
+    "s1Titulo": "1. Sobre estos Términos",
+    "s1Texto": "Estos Términos de Uso regulan la contratación y el uso de los productos y servicios de <strong>OPRtec</strong>, de titularidad de <strong>OPR CONSULTORIA LTDA</strong>, empresa brasileña inscrita en el CNPJ n.º <strong>67.665.959/0001-17</strong>, con sede en Rua Doutor Donato Pinto, 598, Parque Imperial, Brasil (“OPRtec”, “nosotros”). Al contratar cualquier plan o utilizar el sitio, tú (“cliente”, “tú”) aceptas íntegramente estos Términos.",
+    "s2Titulo": "2. Qué ofrecemos",
+    "s2Texto": "OPRtec ofrece módulos de gestión con inteligencia artificial para bares y restaurantes, organizados en planes (Júnior, Pleno y Sénior) que desbloquean distintos conjuntos de funcionalidades, según se describe en las páginas de <linkProdutos>Soluciones</linkProdutos> y <linkPlanos>Planes</linkPlanos>.",
+    "s3Titulo": "3. Contratación, precios y forma de pago",
+    "s3TextoA": "Los planes pueden contratarse en ciclo mensual o anual. En el ciclo mensual, el cobro es recurrente, por el mismo valor, todos los meses. En el ciclo anual, el cobro es <strong>único y al contado</strong>, con tarjeta de crédito, por el valor total anual mostrado en el checkout antes de la confirmación — el valor “por mes” mostrado junto al plan anual es solo una referencia de equivalencia mensual, no un cobro en cuotas.",
+    "s3TextoB": "El pago es procesado por un proveedor de pagos (Mercado Pago). OPRtec no almacena el número de tu tarjeta de crédito en sus propios servidores.",
+    "s4Titulo": "4. Renovación automática",
+    "s4Texto": "Todos los planes tienen renovación automática: al final de cada ciclo (mensual o anual), se realiza un nuevo cobro automáticamente a la misma tarjeta, por el valor vigente, salvo cancelación previa por parte del cliente. Esto se informa explícitamente en el momento de la contratación, en el checkout.",
+    "s5Titulo": "5. Derecho de arrepentimiento (Art. 49 del Código de Defensa del Consumidor)",
+    "s5TextoA": "Tienes derecho a desistir de la contratación dentro de los <strong>7 (siete) días corridos</strong> siguientes a la fecha de la suscripción, sin necesidad de justificarlo, con derecho al reembolso íntegro del monto pagado. Para ejercer este derecho, basta con contactarnos por los canales indicados en la sección “Contacto” más abajo. El reembolso se procesa por el mismo medio de pago utilizado en la compra.",
+    "s5TextoB": "Este derecho de arrepentimiento es distinto del período de prueba gratuito que se ofrece eventualmente en algunos planes: incluso después de finalizado el período de prueba, el derecho de arrepentimiento previsto por la ley sigue vigente dentro de la ventana de 7 días corridos contados desde la contratación.",
+    "s6Titulo": "6. Cancelación",
+    "s6Texto": "Fuera del período de arrepentimiento, puedes cancelar la renovación automática en cualquier momento, desde el panel de la herramienta contratada o por los canales de contacto indicados más abajo. La cancelación detiene los cobros futuros; el acceso a los módulos contratados permanece activo hasta el final del ciclo ya pagado, sin multa y sin necesidad de justificarlo.",
+    "s7Titulo": "7. Disponibilidad del servicio",
+    "s7Texto": "OPRtec hace su mejor esfuerzo para mantener el servicio disponible de forma continua, pero pueden ocurrir interrupciones eventuales por mantenimiento, actualizaciones o factores fuera de nuestro control. Comunicaremos las indisponibilidades relevantes siempre que sea posible.",
+    "s8Titulo": "8. Uso aceptable y propiedad intelectual",
+    "s8Texto": "El acceso es personal e intransferible al establecimiento contratante. Está prohibido revender, sublicenciar o realizar ingeniería inversa de la herramienta. Todo el software, la marca y el contenido de OPRtec son de su titularidad exclusiva.",
+    "s9Titulo": "9. Cambios a estos Términos",
+    "s9Texto": "Podemos actualizar estos Términos periódicamente. Los cambios relevantes se comunicarán por correo electrónico o aviso en el sitio, con antelación razonable antes de entrar en vigencia.",
+    "s10Titulo": "10. Ley aplicable y jurisdicción",
+    "s10Texto": "Estos Términos se rigen por la legislación brasileña, en especial el Código de Defensa del Consumidor (Ley n.º 8.078/1990) y la Ley General de Protección de Datos (Ley n.º 13.709/2018). Se elige el foro del domicilio del consumidor para dirimir eventuales controversias.",
+    "s11Titulo": "11. Contacto",
+    "s11Texto": "Dudas, cancelaciones y solicitudes de arrepentimiento pueden enviarse a <linkEmail>oprconsultorias@gmail.com</linkEmail> o a través de la página de <linkContato>Contacto</linkContato>."
+  },
+  "privacidade": {
+    "metaTitle": "Política de Privacidad — OPRtec",
+    "badge": "Documentos legales",
+    "titulo": "Política de Privacidad",
+    "atualizadoEm": "Última actualización: 23 de agosto de 2026.",
+    "s1Titulo": "1. Quiénes somos",
+    "s1Texto": "Esta Política de Privacidad describe cómo <strong>OPRtec</strong> (<strong>OPR CONSULTORIA LTDA</strong>, CNPJ <strong>67.665.959/0001-17</strong>, con sede en Rua Doutor Donato Pinto, 598, Parque Imperial, Brasil), en calidad de responsable del tratamiento, recopila, usa y protege los datos personales de los visitantes y clientes de este sitio, de conformidad con la Ley General de Protección de Datos de Brasil (Ley n.º 13.709/2018 — LGPD).",
+    "s2Titulo": "2. Qué datos recopilamos",
+    "s2Texto": "Recopilamos solo lo estrictamente necesario para atender tu solicitud de contacto o procesar tu suscripción:",
+    "s2Item1Label": "Formulario de contacto:",
+    "s2Item1Texto": "nombre, nombre del establecimiento, WhatsApp y el mensaje que escribas.",
+    "s2Item2Label": "Checkout / suscripción:",
+    "s2Item2Texto": "nombre, identificación fiscal, correo electrónico y los datos de la tarjeta de crédito — estos últimos se ingresan directamente en la pantalla segura de Mercado Pago y nunca llegan a nuestros servidores; solo recibimos un token de autorización de cobro.",
+    "s3Titulo": "3. Para qué usamos tus datos",
+    "s3Texto": "Usamos tus datos para: responder tu contacto, procesar el pago y la facturación, habilitar el acceso a los módulos contratados, brindar soporte y cumplir obligaciones legales y fiscales. Solo enviamos correos de ofertas o novedades si marcas expresamente esa opción al registrarte.",
+    "s4Titulo": "4. Dónde se almacenan tus datos",
+    "s4Texto": "Los datos enviados por el formulario de contacto se almacenan en Firebase (Google Cloud). Los datos de pago son procesados y almacenados por Mercado Pago, procesador de pagos certificado PCI-DSS — OPRtec no tiene acceso al número completo de tu tarjeta.",
+    "s5Titulo": "5. Por cuánto tiempo los conservamos",
+    "s5Texto": "Conservamos tus datos por el tiempo necesario para cumplir la finalidad para la que fueron recopilados y las obligaciones legales y fiscales aplicables (como la conservación de facturas), y pueden eliminarse a solicitud tuya cuando no exista base legal para conservarlos.",
+    "s6Titulo": "6. Con quién los compartimos",
+    "s6Texto": "Compartimos datos solo con proveedores necesarios para la operación del servicio: Mercado Pago (procesamiento de pagos), Firebase/Google Cloud (almacenamiento de contactos) y, cuando corresponda, un emisor de facturación electrónica. No vendemos tus datos a terceros.",
+    "s7Titulo": "7. Cookies",
+    "s7Texto": "Este sitio utiliza solo cookies esenciales para su funcionamiento. Si llegáramos a utilizar cookies de terceros para análisis de tráfico o publicidad (como Meta o Google), el banner de cookies que se muestra en tu primera visita te permitirá aceptar o rechazar las cookies no esenciales antes de continuar navegando.",
+    "s8Titulo": "8. Tus derechos como titular de los datos",
+    "s8Texto": "De acuerdo con la LGPD, puedes solicitar en cualquier momento: confirmación de la existencia de tratamiento, acceso, corrección, anonimización, portabilidad, eliminación de los datos, información sobre con quién se comparten y revocación del consentimiento otorgado.",
+    "s9Titulo": "9. Cómo ejercer tus derechos",
+    "s9Texto": "Envía tu solicitud a <linkEmail>oprconsultorias@gmail.com</linkEmail>. Responderemos dentro del plazo legal aplicable.",
+    "s10Titulo": "10. Cambios a esta Política",
+    "s10Texto": "Podemos actualizar esta Política periódicamente. La fecha de la última actualización siempre se indica en la parte superior de esta página."
+  },
+  "checkout": {
+    "metaTitle": "Finalizar suscripción — OPRtec",
+    "mpLocale": "es-AR",
+    "planoNaoEncontradoTitulo": "Plan no encontrado",
+    "planoNaoEncontradoTexto": "Vuelve a la página de planes y elige una de las opciones disponibles.",
+    "verPlanos": "Ver planes",
+    "badge": "Finalizar suscripción",
+    "tituloPlano": "Plan {nome}",
+    "diasGratis": "{dias} días gratis",
+    "cobrancaAnual": "Cobro anual",
+    "cobrancaMensal": "Cobro mensual",
+    "porMesAposTeste": "/mes después del período de prueba",
+    "cobrancaUnica": "Cobro único al contado con tarjeta de crédito: R$ {valor} (no es en cuotas)",
+    "voceEconomiza": "Ahorras R$ {valor}/año",
+    "avisoTeste": "Tu tarjeta se validará ahora, pero solo se te cobrará después de {dias} días. Si no quieres continuar, cancela antes de que termine el período de prueba — el cobro es automático si la suscripción no se cancela antes.",
+    "avisoArrependimento": "Tienes <strong>7 días corridos</strong> después de la contratación para desistir y pedir el reembolso íntegro, sin necesidad de justificarlo (derecho de arrepentimiento previsto en el Art. 49 del Código de Defensa del Consumidor de Brasil). Consulta los detalles en nuestros <link>Términos de Uso</link>.",
+    "form": {
+      "carregando": "Cargando formulario de pago…",
+      "nomeEstabelecimento": "Nombre del establecimiento",
+      "nomeEstabelecimentoPlaceholder": "Ej: Bacco Restaurante",
+      "nomeEstabelecimentoAjuda": "Usamos este nombre para crear el acceso a tu herramienta.",
+      "aceito": "Leí y acepto los <linkTermos>Términos de Uso</linkTermos> y la <linkPrivacidade>Política de Privacidad</linkPrivacidade>.",
+      "marketing": "Quiero recibir ofertas y novedades de OPRtec por correo electrónico.",
+      "preenchaAntes": "Completa el nombre del establecimiento y marca la casilla de aceptación de arriba para desbloquear el formulario de pago.",
+      "recusadoTitulo": "Pago rechazado",
+      "tentarNovamente": "Intentar de nuevo",
+      "confirmandoTitulo": "Confirmando tu suscripción…",
+      "confirmandoTexto": "No cierres ni actualices esta página.",
+      "aprovadoTitulo": "¡Pago aprobado!",
+      "redirecionando": "Redirigiendo…",
+      "seguranca": "Pago procesado de forma segura por Mercado Pago. Los datos de tu tarjeta no pasan por nuestro servidor.",
+      "erroGenerico": "No fue posible confirmar la suscripción.",
+      "erroCatch": "No fue posible confirmar la suscripción. Inténtalo de nuevo.",
+      "erroBrick": "Mercado Pago no pudo procesar los datos de la tarjeta. Revisa el número, la fecha de vencimiento y el código de seguridad, e inténtalo de nuevo."
+    },
+    "sucesso": {
+      "metaTitle": "Suscripción confirmada — OPRtec",
+      "titulo": "¡Suscripción confirmada!",
+      "texto": "Recibimos los datos de tu pago. Pronto nos pondremos en contacto para empezar a configurar tu plan en OPRtec.",
+      "voltar": "Volver al inicio"
+    }
+  },
+  "planos": {
+    "metaTitle": "Adquiere tu Plan — OPRtec",
+    "badge": "Planes",
+    "titulo": "Adquiere tu plan",
+    "subtitulo": "Elige el plan según el nivel de madurez de tu operación hoy.",
+    "economize": "💰 Ahorra {pct}% con el plan anual",
+    "mensal": "Mensual",
+    "anual": "Anual",
+    "maisPopular": "Más popular",
+    "porMes": "/mes",
+    "cobradoUmaVez": "Se cobra una vez al año (R$ {valor})",
+    "voceEconomiza": "Ahorras R$ {valor}/año",
+    "quero": "Quiero este plan",
+    "incluidoTitulo": "Qué incluye cada plan",
+    "incluidoSubtitulo": "Cada nivel incluye todas las funciones de los niveles anteriores, además de las propias.",
+    "funcaoLabel": "Función",
+    "incluido": "Incluido",
+    "naoIncluido": "No incluido",
+    "items": {
+      "junior": {
+        "nome": "Madurez Júnior",
+        "descricao": "Para quienes están empezando a organizar la operación y quieren un primer paso de bajo esfuerzo."
+      },
+      "pleno": {
+        "nome": "Madurez Pleno",
+        "descricao": "Para quienes ya tienen algo de estructura y quieren visibilidad completa de datos y procesos."
+      },
+      "senior": {
+        "nome": "Madurez Sénior",
+        "descricao": "Para quienes buscan subir de nivel con eficiencia operativa y profesionalismo de empresa grande."
+      }
+    },
+    "funcionalidades": {
+      "kpi-financeiro": "KPI Financiero",
+      "controle-bebidas": "Control de Bebidas",
+      "reservas": "Reservas",
+      "avaliacao-cliente": "Evaluación del Cliente",
+      "controle-contratos": "Control de Contratos",
+      "controle-estoque": "Control de Stock",
+      "mao-de-obra": "Mano de Obra",
+      "dre": "Estado de Resultados",
+      "inventario": "Inventario",
+      "calculadora-impostos": "Calculadora de Impuestos",
+      "conciliacao-bancaria": "Conciliación Bancaria",
+      "ficha-tecnica-inteligente": "Ficha Técnica Inteligente",
+      "checklist": "Check-list",
+      "mapa-compras": "Mapa de Compras",
+      "fluxo-caixa": "Flujo de Caja",
+      "concessionarias": "Servicios Públicos",
+      "mapa-manutencao": "Mapa de Mantenimiento"
+    }
+  },
+  "checkoutApi": {
+    "muitasTentativas": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "planoInvalido": "Plan inválido.",
+    "emailInvalido": "Correo electrónico inválido.",
+    "precisaAceitarTermos": "Es necesario aceptar los Términos de Uso y la Política de Privacidad.",
+    "informeEstabelecimento": "Indica el nombre del establecimiento.",
+    "dadosCartaoAusentes": "Faltan los datos de la tarjeta.",
+    "pagamentoNaoConfigurado": "El pago aún no está configurado. Define MERCADOPAGO_ACCESS_TOKEN en las variables de entorno.",
+    "cartaoRecusado": "Mercado Pago rechazó los datos de la tarjeta. Revísalos e inténtalo de nuevo."
+  },
+  "produtos": {
+    "metaTitle": "Soluciones — OPRtec",
+    "badge": "Soluciones",
+    "titulo": "Soluciones a la carta",
+    "subtitulo": "Cada módulo resuelve un problema específico del día a día de bares y restaurantes. Los planes desbloquean el acceso a los módulos según el nivel de madurez de tu operación.",
+    "cta": "Agenda una Evaluación Gratuita",
+    "items": {
+      "controle-de-bebidas": {
+        "nome": "Control de Bebidas",
+        "tags": [
+          "Ingreso",
+          "Auditoría",
+          "LOG"
+        ],
+        "resumo": "Una botella que sale del stock sin pasar por la caja es dinero que se evapora todos los días.",
+        "descricao": "El módulo registra la entrada y salida de cada bebida con auditoría completa, cruzando lo comprado con lo vendido — para que cierres la llave del desperdicio de una vez."
+      },
+      "controle-de-estoque": {
+        "nome": "Control de Stock",
+        "tags": [
+          "Centros de Costo",
+          "Costo Medio",
+          "Auditoría"
+        ],
+        "resumo": "Mientras el dueño no vea el stock como la caja fuerte de la empresa, el dinero sigue desapareciendo del resultado.",
+        "descricao": "Un control efectivo va más allá de contar ítems: hay que saber a dónde va el dinero cuando sale de la caja fuerte."
+      },
+      "reservas": {
+        "nome": "Reservas",
+        "tags": [
+          "Solicitudes",
+          "Confirmación",
+          "Enlace Público"
+        ],
+        "resumo": "En medio del movimiento, llega esa reserva anotada en un papelito que se perdió en el caos de la caja. ¿Y ahora?",
+        "descricao": "Con un enlace público de reservas y confirmación automática, esa vergüenza no vuelve a pasar — y le da una imagen más profesional a tu atención."
+      },
+      "ficha-tecnica-inteligente": {
+        "nome": "Ficha Técnica Inteligente",
+        "tags": [
+          "Ficha Técnica",
+          "Ingeniería de Menú",
+          "Meta de Costo"
+        ],
+        "resumo": "La ficha técnica es lo básico. Saber qué vender en el momento justo para maximizar el resultado es el desafío.",
+        "descricao": "Con la Meta de Costo, generás el direccionamiento de ventas para tu equipo y contribuís directamente al aumento del margen de contribución."
+      },
+      "mao-de-obra": {
+        "nome": "Mano de Obra",
+        "tags": [
+          "Nómina",
+          "Extras",
+          "Costo Total por Empleado"
+        ],
+        "resumo": "¿Cuánto cuesta de verdad cada plato que sale de tu cocina, contando la mano de obra detrás?",
+        "descricao": "El módulo calcula el costo total por empleado — nómina, extras y cargas sociales — y muestra el peso real de la mano de obra en tu operación, plato a plato."
+      },
+      "avaliacao-cliente": {
+        "nome": "Evaluación del Cliente",
+        "tags": [
+          "App Propia",
+          "Nota Media",
+          "Respuestas"
+        ],
+        "resumo": "El cliente insatisfecho no se queja en el mostrador — simplemente no vuelve.",
+        "descricao": "Una app propia captura la evaluación de cada cliente automáticamente y consolida la nota media, para que actúes antes de que el silencio se convierta en una mesa vacía."
+      },
+      "check-list": {
+        "nome": "Check-list",
+        "resumo": "La apertura y el cierre de calidad no pueden depender de la memoria de quien esté de turno hoy.",
+        "descricao": "Los checklists digitales garantizan que ninguna etapa de la operación quede atrás, con registro automático de quién hizo qué y cuándo."
+      },
+      "dre": {
+        "nome": "Estado de Resultados",
+        "tags": [
+          "Ingresos",
+          "Costo de Mercadería",
+          "Gastos",
+          "Resultado Neto"
+        ],
+        "resumo": "¿Alguna vez te imaginaste manejando un auto sin velocímetro, sin indicador de combustible y sin calibrar los neumáticos?",
+        "descricao": "Así es como muchos empresarios manejan sus negocios — y después no entienden por qué la empresa recibe una multa, se tambalea en las dificultades y se rompe en el camino. Un estado de resultados gerencial es el tablero que faltaba: información estratégica para decidir con seguridad, a la velocidad correcta para cada tramo."
+      },
+      "kpi-op-fin": {
+        "nome": "KPI OP/FIN",
+        "tags": [
+          "Ingresos",
+          "Costo de Mercadería",
+          "Ticket Medio",
+          "Comparativo"
+        ],
+        "resumo": "Trabajar con metas es trabajar con propósito.",
+        "descricao": "Ingresos, costo de mercadería, ticket medio y comparativos — todo en un solo panel, para que tomes decisiones todos los días con la dirección correcta, no por intuición."
+      },
+      "conciliacao-bancaria": {
+        "nome": "Conciliación Bancaria",
+        "resumo": "Vender sin saber si cobraste por ello es caminar a oscuras.",
+        "descricao": "La conciliación bancaria automática te da la tranquilidad de saber que todo tu esfuerzo está siendo recompensado, sin necesidad de mantener a alguien solo para eso."
+      },
+      "inventario": {
+        "nome": "Inventario",
+        "tags": [
+          "Ingreso",
+          "Auditoría",
+          "LOG"
+        ],
+        "resumo": "Un conteo de stock hecho de cualquier manera es una decisión equivocada tomada con datos equivocados.",
+        "descricao": "El módulo de inventario registra cada conteo con auditoría e historial completo, para que tu balance coincida con la realidad — no con la estimación."
+      },
+      "mapa-de-compras": {
+        "nome": "Mapa de Compras",
+        "tags": [
+          "Proveedores",
+          "Compras",
+          "Panel"
+        ],
+        "resumo": "Comprar sin visión de lo que ya tenés en stock es pagar dos veces por lo mismo.",
+        "descricao": "Un panel único de proveedores y compras te muestra qué pedir, a quién y cuándo — para que el dinero parado en el estante nunca más te tome por sorpresa."
+      },
+      "controle-de-contratos": {
+        "nome": "Control de Contratos",
+        "tags": [
+          "Vencimientos",
+          "Análisis Crítico",
+          "Alertas por WhatsApp"
+        ],
+        "resumo": "Un contrato que vence sin que nadie lo note es una multa, un reajuste perdido o una renovación automática que nadie quería.",
+        "descricao": "Un panel de vencimientos con alertas automáticas por WhatsApp, análisis crítico de multas y cláusulas sensibles, e historial completo de cambios — para que ningún plazo te tome por sorpresa de nuevo."
+      },
+      "concessionarias": {
+        "nome": "Servicios Públicos",
+        "tags": [
+          "Agua",
+          "Energía",
+          "Gas",
+          "Medidores y Panel"
+        ],
+        "resumo": "Agua, luz y gas pesan en la cuenta — pero casi nadie los controla de cerca.",
+        "descricao": "El control de servicios públicos organiza el consumo y el costo de los servicios esenciales de tu operación, con lectura diaria opcional vía WhatsApp, para que detectes el desperdicio antes de que se convierta en factura."
+      },
+      "mapa-de-manutencao": {
+        "nome": "Mapa de Mantenimiento",
+        "tags": [
+          "Tickets",
+          "Presupuestos",
+          "Proveedores",
+          "SLA"
+        ],
+        "resumo": "Un equipo que se rompe en medio del servicio cuesta mucho más que el mantenimiento que postergaste.",
+        "descricao": "Un mapa de mantenimiento con tickets, presupuestos y SLA por proveedor evita que la heladera, el horno y la plancha se rompan justo el día de más movimiento."
+      },
+      "fluxo-de-caixa": {
+        "nome": "Flujo de Caja",
+        "tags": [
+          "Cuentas",
+          "Saldos",
+          "Transferencias"
+        ],
+        "resumo": "Saber que vendiste bien no paga las facturas — solo el saldo de caja real las paga.",
+        "descricao": "Control de cuentas bancarias, saldo inicial, transferencias entre cuentas y cada salida de pago — para que nunca más te sorprenda una caja que parecía llena y no lo estaba."
+      }
+    }
+  },
+  "cases": {
+    "metaTitle": "Casos — OPRtec",
+    "badge": "Casos",
+    "titulo": "Resultados reales",
+    "subtitulo": "Algunos de los negocios que ya reorganizamos con el método OPR.",
+    "problemaLabel": "Problema",
+    "solucaoLabel": "Qué se hizo",
+    "items": {
+      "confeitaria-vilamore": {
+        "cliente": "Confeitaria Vilamore",
+        "problema": "Ineficiencia operativa por falta de organización y procesos productivos.",
+        "solucao": "Análisis de la curva ABC, diagnóstico de productos que consumían mucho tiempo de producción y vendían poco, y aplicación del método 5S para reducir el tiempo perdido en movimientos innecesarios.",
+        "resultados": [
+          "8,5% de reducción en el costo de mercadería",
+          "3 horas/día de trabajo ahorradas",
+          "30% de reducción en el costo de mano de obra"
+        ]
+      },
+      "pizzaria-danthero": {
+        "cliente": "Pizzaria D'Anthero",
+        "problema": "Costo de mercadería alto por falta de estandarización en el armado de la pizza.",
+        "solucao": "Identificación del incumplimiento de los gramajes indicados en las fichas técnicas; implementación de la preparación anticipada con pesaje auditado antes del pico de demanda.",
+        "resultados": [
+          "5,2% de reducción en el costo de mercadería",
+          "Optimización del uso de mano de obra y más velocidad en la preparación",
+          "7% de aumento en las ventas"
+        ]
+      },
+      "cultural-bar": {
+        "cliente": "Cultural Bar",
+        "problema": "Ventas de bebidas sin cobrar, afectando la facturación.",
+        "solucao": "Control diario de conteo de bebidas con auditoría por IA.",
+        "resultados": [
+          "9% de reducción en las pérdidas por ventas sin cobrar"
+        ]
+      },
+      "rede-hoteleira": {
+        "cliente": "Cadena Hotelera",
+        "problema": "Falta de control en el ingreso al desayuno.",
+        "solucao": "Automatización de la lista de huéspedes, permitiendo control en línea de los ingresos y comprensión de la curva de consumo por hora.",
+        "resultados": [
+          "11% de reducción en el costo de producción de los ítems del desayuno"
+        ]
+      },
+      "churrascaria-chimarron": {
+        "cliente": "Churrascaria Chimarron",
+        "problema": "CMV elevado en el rodizio de carnes y una administración sin estructura profesional.",
+        "solucao": "Estructuración y profesionalización de la administración, con control del CMV del rodizio de carnes.",
+        "resultados": [
+          "18,33% de reducción en el CMV del rodizio de carnes",
+          "8% de aumento en el ticket promedio",
+          "Administración estructurada y profesionalizada"
+        ]
+      },
+      "churrascaria-lago-sul": {
+        "cliente": "Churrascaria Lago Sul",
+        "problema": "Administración sin procesos profesionales y sin control financiero por metas.",
+        "solucao": "Profesionalización de la administración e implementación de control financiero con metas y KPIs.",
+        "resultados": [
+          "15,4% de reducción en el CMV",
+          "Administración profesionalizada",
+          "Control financiero con metas y KPIs"
+        ]
+      },
+      "poleiro-do-galo": {
+        "cliente": "Poleiro do Galo",
+        "problema": "Gastos elevados de gas, luz y agua afectando el resultado.",
+        "solucao": "Control y reducción de los gastos de gas, luz y agua.",
+        "resultados": [
+          "Más de R$ 3,5 mil/mes de reducción en gas, luz y agua",
+          "Top 1 en Tripadvisor"
+        ]
+      },
+      "hamburgueria-gruta": {
+        "cliente": "Hamburgueria Gruta",
+        "problema": "Gestión financiera sin estructura y CMV por encima de lo ideal.",
+        "solucao": "Implementación de BPO financiero y de la Ficha Técnica Inteligente para controlar el CMV.",
+        "resultados": [
+          "BPO financiero implementado",
+          "Reducción de 5 p.p. en el CMV con la Ficha Técnica Inteligente"
+        ]
+      },
+      "butiquim-bistro": {
+        "cliente": "Butiquim Bistrô",
+        "problema": "Desorganización física y procesos que elevaban los costos de mano de obra y de mercadería.",
+        "solucao": "Organización física del ambiente y mejora de los procesos operativos.",
+        "resultados": [
+          "Reducción de 4,3 p.p. en los costos de mano de obra (CMO) y mercadería (CMV)",
+          "Ambiente físico organizado"
+        ]
+      }
+    },
+    "ctaTitulo": "¿Quieres resultados como estos en tu negocio?",
+    "ctaBotao": "Agenda una Evaluación Gratuita"
+  },
+  "home": {
+    "heroBadge": "Para bares y restaurantes que buscan resultados reales.",
+    "heroTitulo": "Elimina desperdicios y <cyan>aumenta</cyan> tu <cyan>ganancia</cyan>",
+    "heroTexto": "Convierte el caos del día a día en resultados predecibles. Nuestra tecnología actúa directamente en la organización y los procesos de tu negocio, sin exigir que seas un especialista.",
+    "ctaAvaliacao": "Agenda una Evaluación Gratuita",
+    "dorTitulo": "¿Tu cocina funciona, pero el dinero no alcanza?",
+    "dores": {
+      "cmv": {
+        "titulo": "Costo de mercadería por las nubes",
+        "descricao": "Fichas técnicas muertas en un archivo de Excel, mientras tu cocinero va cambiando la receta poco a poco."
+      },
+      "madrugada": {
+        "titulo": "Madrugadas cerrando caja",
+        "descricao": "El cierre del día consume horas de la madrugada — tiempo que debería estar con la familia o descansando."
+      },
+      "dre": {
+        "titulo": "Sin estado de resultados actualizado",
+        "descricao": "Decisiones tomadas por intuición, porque el estado de resultados solo aparece (cuando aparece) semanas después del cierre del mes."
+      }
+    },
+    "metodoBadge": "Método OPR",
+    "metodoTitulo": "Entregamos <cyan>soluciones</cyan>, no herramientas",
+    "esteiraTitulo": "Una escalera de soluciones, del primer paso a la gestión completa",
+    "esteira": {
+      "junior": {
+        "nome": "Nivel de Madurez Júnior",
+        "descricao": "Es el momento de sacar la empresa del piloto automático. Empiezas a ver el negocio con claridad, das el primer paso para transformar la intuición en método y sientas las bases de una operación que va más allá del ajetreo diario."
+      },
+      "pleno": {
+        "nome": "Nivel de Madurez Pleno",
+        "descricao": "La casa ya está en orden y ahora es hora de ganar profundidad. Empiezas a seguir de cerca cada engranaje del negocio, te anticipas a los problemas antes de que se conviertan en pérdidas y llevas la operación con confianza, ya no a la improvisación."
+      },
+      "senior": {
+        "nome": "Nivel de Madurez Sénior",
+        "descricao": "Tu empresa opera con la precisión de un negocio grande de verdad. Los procesos funcionan solos, las decisiones se toman con datos en mano, y por fin tienes tiempo y libertad para pensar en estrategia — no solo apagar incendios."
+      }
+    },
+    "ctaFinalTitulo": "Descubre cuál solución es ideal para tu momento.",
+    "ctaAvaliacaoCurto": "Agendar evaluación gratis",
+    "ctaMicro": "Gratis · sin compromiso",
+    "metodoIntro": "Primero ponemos la casa en orden; la tecnología viene después. Así es como los resultados aparecen de verdad.",
+    "pilares": {
+      "organizacao": {
+        "nome": "Organización",
+        "descricao": "Ambiente físico y mental en orden, con la filosofía 5S. Es el suelo donde todo crece."
+      },
+      "processos": {
+        "nome": "Procesos",
+        "descricao": "Fichas técnicas, rutinas y controles que tu equipo puede seguir todos los días."
+      },
+      "resultados": {
+        "nome": "Resultados",
+        "descricao": "CMV, costos y metas acompañados con datos e IA, para decidir con hechos y no por intuición."
+      }
+    },
+    "metodoLink": "Conoce el método completo",
+    "resultadosLabel": "Resultados obtenidos",
+    "resultados": [
+      {
+        "valor": "+R$ 192 MM",
+        "descricao": "en ingresos"
+      },
+      {
+        "valor": "−327 toneladas",
+        "descricao": "en desperdicios"
+      },
+      {
+        "valor": "R$ 9,8 MM",
+        "descricao": "en reducción de costos"
+      },
+      {
+        "valor": "+19 mil horas",
+        "descricao": "de consultoría"
+      }
+    ],
+    "resultadosLink": "Ver todos los casos"
+  },
+  "sobre": {
+    "metaTitle": "Nosotros — OPRtec",
+    "badge": "Sobre OPRtec",
+    "titulo": "Organización, la base para obtener resultados.",
+    "intro": "Experiencia práctica, método y tecnología para transformar operaciones de alimentación en negocios más livianos, consistentes y rentables.",
+    "bio": "Formado en Ingeniería de Producción, con más de 25 años de experiencia en gestión de empresas — pasando por multinacionales y emprendimientos propios —, dediqué los últimos 14 años al sector de alimentación fuera del hogar. En ese período, acumulé una extensa trayectoria en reestructuración de empresas del sector: más de 1.000 clientes atendidos, de los más diversos tipos, como parrillas, bares, restaurantes, hamburgueserías, pizzerías, comida japonesa, pastelerías y A&B del sector hotelero, entre otros.",
+    "metodoLabel": "El método OPR",
+    "metodoTitulo": "El punto de partida es poner la casa en orden.",
+    "metodoP1": "Durante ese proceso de aprendizaje, comprendí que la mayor dificultad para alcanzar los resultados deseados pasaba por la falta de organización de quien decide abrir o liderar la empresa. Ante ese escenario, creé el método <strong>OPR</strong> — Organización, Procesos y Resultados —, en el que la prioridad número 1 es la organización del ambiente físico y mental de las personas involucradas en la operación. De nada sirve hablar de procesos, fichas técnicas y capacitaciones en un ambiente donde prevalece el desorden: organizar la empresa de forma metódica y disciplinada es la base estructural para implementar procesos que puedan ser seguidos por profesionales bien entrenados.",
+    "metodoP2": "Dentro del método, perseguimos no solo el resultado financiero, sino también los resultados que llevan a la salud y al bienestar dentro de la empresa, en casa y en la vida social del emprendedor. Nuestro objetivo es hacer que la vida prevalezca con abundancia, para que la empresa sea solo la parte que le permita al empresario satisfacer sus necesidades mundanas y no un peso que cargar. El uso de la inteligencia artificial es solo una herramienta de optimización de tiempo, que le permite al empresario mantener el foco en la estrategia y en el propósito de su vida. Es esencial que la organización y la limpieza se tomen en serio, pues son la base del éxito de cualquier emprendimiento.",
+    "metodoP3": "Transformo el caos de la cocina en una operación de alta precisión y rentabilidad predecible, uniendo la visión de un ingeniero de producción a más de 15 años de experiencia práctica en el mercado gastronómico. A través de una metodología quirúrgica que elimina el desperdicio invisible, optimiza el flujo de producción y recalcula cada margen de tu negocio, entrego resultados reales que van mucho más allá de la teoría. No vendo charlas ni informes rígidos, sino soluciones de punta a punta con foco total en la eficiencia operativa y en la expansión de tu ganancia neta.",
+    "visaoLabel": "Visión",
+    "visaoTexto": "Ser la principal referencia en gestión integrada entre autoconocimiento y tecnología, convirtiendo el caos en orden para acelerar la entrega de resultados.",
+    "missaoLabel": "Misión",
+    "missaoTexto": "¡Reduce costos y pon dinero en tu bolsillo!",
+    "valoresLabel": "Valores",
+    "valores": {
+      "respeito": {
+        "nome": "Respeto",
+        "descricao": "Valorar a las personas, el ambiente y el tiempo en cada etapa del proceso."
+      },
+      "humildade": {
+        "nome": "Humildad",
+        "descricao": "Mantener la postura de aprendiz para evolucionar con la tecnología y la práctica."
+      },
+      "desenvolvimento": {
+        "nome": "Desarrollo",
+        "descricao": "Buscar la mejora continua entre la mente, el método y las herramientas."
+      },
+      "organizacao": {
+        "nome": "Organización",
+        "descricao": "Estructurar el presente para garantizar consistencia y claridad en el futuro."
+      }
+    },
+    "proximoPassoLabel": "Próximo paso",
+    "proximoPassoTitulo": "Tu operación puede empezar a cambiar hoy.",
+    "proximoPassoBotao": "Agenda una Evaluación Gratuita",
+    "filosofiaLabel": "La filosofía del método",
+    "filosofiaTitulo": "Organización, Procesos y Resultados.",
+    "filosofiaQuote": "Como escribió Friedrich Nietzsche, \"Quien tiene un porqué para vivir puede soportar casi cualquier cómo\". Nuestro método va más allá de la tecnología con IA y se apoya en la filosofía estoica, llevando al empresario a comprender su propósito y el porqué de hacer lo que debe hacerse.",
+    "filosofiaP1": "El desorden físico de una operación es, ante todo, un reflejo del caos que prevalece en la mente de quien la lidera. Solo en un ambiente organizado, con propósito y energía, es posible sostener procesos que realmente eleven la productividad.",
+    "filosofiaP2": "El Método OPR integra la filosofía de trabajo 5S para poner a las personas y al ambiente en total sintonía. La Inteligencia Artificial y las herramientas tecnológicas avanzadas solo prosperan cuando esa armonía ya está establecida.",
+    "filosofiaP3": "Es como preparar la tierra: si el suelo es inadecuado, ni la mejor semilla del mundo prospera. Nosotros preparamos tu terreno para el crecimiento.",
+    "filosofiaP4": "En OPRtec, creemos que cada negocio tiene su propio tiempo. Al completar el diagnóstico <link>\"Agenda una Evaluación Gratuita\"</link>, identificamos el nivel de madurez de tu empresa para orientarte exactamente hacia las soluciones que necesitas ahora. Nuestro compromiso es con tu resultado práctico: no vendemos herramientas que tu operación todavía no tiene estructura para absorber.",
+    "filosofiaP5": "Dividimos el camino empresarial en tres etapas: Júnior, Pleno y Sénior. Cada nivel desbloquea el acceso a un conjunto específico de soluciones.",
+    "filosofiaP6": "Si tu objetivo es estructurar tu organización y subir de nivel, ofrecemos consultoría personalizada para preparar el terreno de tu crecimiento. Y para seguir guiando tu camino, mira nuestros videos en YouTube <link>@yoshioshubo</link> con reflexiones y estrategias prácticas para la rutina de quien emprende."
+  },
+  "contato": {
+    "metaTitle": "Contacto — OPRtec",
+    "badge": "Habla con nosotros",
+    "titulo": "Agenda una conversación",
+    "subtitulo": "Ponte en contacto.",
+    "form": {
+      "nome": "Nombre",
+      "estabelecimento": "Nombre del establecimiento",
+      "whatsapp": "WhatsApp",
+      "desafio": "¿Cuál es tu principal desafío hoy?",
+      "aceito": "Leí y acepto la <link>Política de Privacidad</link>.",
+      "enviar": "Enviar",
+      "alertaAceite": "Es necesario aceptar la Política de Privacidad para enviar.",
+      "sucesso": "¡Información enviada con éxito!",
+      "erro": "Ocurrió un error al enviar. Inténtalo de nuevo."
+    },
+    "canaisTitulo": "¿Prefieres hablar directamente?",
+    "canalWhatsapp": "WhatsApp",
+    "canalTelefone": "Teléfono",
+    "canalEmail": "Correo"
+  },
+  "cookieBanner": {
+    "texto": "Usamos cookies esenciales para el funcionamiento del sitio. Las cookies no esenciales (como las de análisis o publicidad) solo se activan con tu consentimiento. Consulta nuestra <link>Política de Privacidad</link>.",
+    "rejeitar": "Rechazar no esenciales",
+    "aceitar": "Aceptar todas"
+  },
+  "avaliacao": {
+    "metaTitle": "Evaluación Gratuita — OPRtec",
+    "badge": "Evaluación gratuita",
+    "titulo": "Descubre el nivel de madurez de tu negocio",
+    "subtitulo": "Responde el diagnóstico a continuación para identificar el nivel de madurez de tu operación y las soluciones que necesita ahora.",
+    "formNota": "Por ahora, el formulario está en portugués.",
+    "whatsappTexto": "¿Prefieres hablar directamente?",
+    "whatsappBotao": "Hablar por WhatsApp",
+    "abrirNovaAba": "¿No cargó? Abrir el formulario en una nueva pestaña"
+  },
+  "whatsapp": {
+    "label": "Hablar por WhatsApp",
+    "mensagem": "¡Hola! Vi el sitio de OPRtec y me gustaría saber más."
+  }
+}

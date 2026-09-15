@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leads/{leadId} {
+      allow create: if request.resource.data.keys().hasOnly(['nome','estabelecimento','whatsapp','desafio','status','criadoEm'])
+        && request.resource.data.nome is string && request.resource.data.nome.size() < 200
+        && request.resource.data.estabelecimento is string && request.resource.data.estabelecimento.size() < 200
+        && request.resource.data.whatsapp is string && request.resource.data.whatsapp.size() < 30
+        && request.resource.data.desafio is string && request.resource.data.desafio.size() < 2000
+        && request.resource.data.status == 'novo';
+      allow read, update, delete: if false;
+    }
+
+    // Contatos exibidos no site (WhatsApp, telefone, e-mail), editados em oprtec.com.br/admin.
+    // Leitura pública (o site lê pra montar os botões); escrita só pelos e-mails autorizados.
+    match /siteConfig/{docId} {
+      allow read: if true;
+      allow create, update: if docId == 'contatos'
+        && request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['oprconsultorias@gmail.com', 'ygshubo@gmail.com']
+        && request.resource.data.keys().hasOnly(['whatsappNumero','whatsappMensagem','telefone','email','atualizadoEm','atualizadoPor'])
+        && request.resource.data.whatsappNumero is string
+        && request.resource.data.whatsappNumero.matches('^55[0-9]{10,11}$')
+        && request.resource.data.whatsappMensagem is map
+        && request.resource.data.whatsappMensagem.keys().hasOnly(['pt','en','es'])
+        && request.resource.data.whatsappMensagem.pt is string && request.resource.data.whatsappMensagem.pt.size() <= 400
+        && request.resource.data.whatsappMensagem.en is string && request.resource.data.whatsappMensagem.en.size() <= 400
+        && request.resource.data.whatsappMensagem.es is string && request.resource.data.whatsappMensagem.es.size() <= 400
+        && request.resource.data.telefone is string && request.resource.data.telefone.size() <= 30
+        && request.resource.data.email is string && request.resource.data.email.size() <= 150
+        && request.resource.data.atualizadoEm == request.time
+        && request.resource.data.atualizadoPor == request.auth.token.email;
+      allow delete: if false;
+    }
+  }
+}

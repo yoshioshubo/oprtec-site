@@ -47,7 +47,7 @@ export default function HeroGallery() {
   }, []);
 
   return (
-    <div className="relative aspect-[4/3] w-full">
+    <div className="relative aspect-[4/3] w-full lg:aspect-[16/10]">
       {slides.map((slide, i) => {
         const offset = (i - active + slides.length) % slides.length;
         const style = CARD_STYLES[offset];

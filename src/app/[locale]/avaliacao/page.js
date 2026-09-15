@@ -1,0 +1,62 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { linkWhatsApp, TALLY_FORM_ID } from "@/lib/contato";
+import { obterContatos } from "@/lib/siteConfig";
+import TallyEmbed from "./TallyEmbed";
+
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "avaliacao" });
+  return { title: t("metaTitle") };
+}
+
+// O diagnóstico continua sendo o formulário do Tally, mas embutido aqui dentro —
+// o visitante não sai do domínio da OPRtec nem cai numa aba nova.
+export default async function AvaliacaoPage({ params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("avaliacao");
+  const tw = await getTranslations("whatsapp");
+  const contatos = await obterContatos();
+
+  return (
+    <div className="mx-auto max-w-3xl px-6 pb-20 pt-6">
+      <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
+        {t("badge")}
+      </span>
+      <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+        {t("titulo")}
+      </h1>
+      <p className="mt-4 text-lg text-slate-600">{t("subtitulo")}</p>
+      {t("formNota") && (
+        <p className="mt-2 text-sm text-slate-500">{t("formNota")}</p>
+      )}
+
+      <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
+        <TallyEmbed title={t("titulo")} />
+        <p className="mt-4 text-center text-xs text-slate-400">
+          <a
+            href={`https://tally.so/r/${TALLY_FORM_ID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-slate-600"
+          >
+            {t("abrirNovaAba")}
+          </a>
+        </p>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center gap-3 text-center">
+        <p className="text-slate-600">{t("whatsappTexto")}</p>
+        <a
+          href={linkWhatsApp(contatos.whatsappNumero, contatos.whatsappMensagem[locale] || tw("mensagem"))}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
+        >
+          {t("whatsappBotao")}
+        </a>
+      </div>
+
+    </div>
+  );
+}

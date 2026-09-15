@@ -18,26 +18,26 @@ export function economiaAnual(precoMensal) {
 // Ordem de nível: cada plano herda as funções de todos os níveis anteriores.
 export const NIVEIS_ORDEM = ["junior", "pleno", "senior"];
 
-// Lista geral de funções. "nivel" é o plano em que a função é liberada
-// pela primeira vez; planos superiores também têm acesso a ela.
+// Lista geral de funções (id + nível em que é liberada). O nome exibido vive
+// em messages/{locale}.json, namespace "planos.funcionalidades".
 export const funcionalidades = [
-  { nome: "KPI Financeiro", nivel: "junior" },
-  { nome: "Controle de Bebidas", nivel: "junior" },
-  { nome: "Reservas", nivel: "junior" },
-  { nome: "Avaliação Cliente", nivel: "junior" },
-  { nome: "Controle de Contratos", nivel: "junior" },
-  { nome: "Controle de Estoque", nivel: "pleno" },
-  { nome: "M.O (Mão de Obra)", nivel: "pleno" },
-  { nome: "DRE", nivel: "pleno" },
-  { nome: "Inventário", nivel: "pleno" },
-  { nome: "Calculadora de Impostos", nivel: "pleno" },
-  { nome: "Conciliação Bancária", nivel: "pleno" },
-  { nome: "Ficha Técnica Inteligente", nivel: "senior" },
-  { nome: "Check-list", nivel: "senior" },
-  { nome: "Mapa de Compras", nivel: "senior" },
-  { nome: "Fluxo de Caixa", nivel: "senior" },
-  { nome: "Concessionárias", nivel: "senior" },
-  { nome: "Mapa de Manutenção", nivel: "senior" },
+  { id: "kpi-financeiro", nivel: "junior" },
+  { id: "controle-bebidas", nivel: "junior" },
+  { id: "reservas", nivel: "junior" },
+  { id: "avaliacao-cliente", nivel: "junior" },
+  { id: "controle-contratos", nivel: "junior" },
+  { id: "controle-estoque", nivel: "pleno" },
+  { id: "mao-de-obra", nivel: "pleno" },
+  { id: "dre", nivel: "pleno" },
+  { id: "inventario", nivel: "pleno" },
+  { id: "calculadora-impostos", nivel: "pleno" },
+  { id: "conciliacao-bancaria", nivel: "pleno" },
+  { id: "ficha-tecnica-inteligente", nivel: "senior" },
+  { id: "checklist", nivel: "senior" },
+  { id: "mapa-compras", nivel: "senior" },
+  { id: "fluxo-caixa", nivel: "senior" },
+  { id: "concessionarias", nivel: "senior" },
+  { id: "mapa-manutencao", nivel: "senior" },
 ];
 
 // Um plano tem uma função se o nível dela vier igual ou antes do próprio nível.
@@ -47,29 +47,10 @@ export function planoTemFuncao(planoSlug, funcaoNivel) {
   );
 }
 
+// Só a estrutura (slug/preço/destaque) — nome e descrição vivem em
+// messages/{locale}.json, namespace "planos.items".
 export const planos = [
-  {
-    slug: "junior",
-    nome: "Maturidade Júnior",
-    preco: 188,
-    destaque: false,
-    descricao:
-      "Para quem está começando a organizar a operação e quer o primeiro passo com baixo atrito.",
-  },
-  {
-    slug: "pleno",
-    nome: "Maturidade Pleno",
-    preco: 388,
-    destaque: true,
-    descricao:
-      "Para quem já tem alguma estrutura e quer visibilidade completa de dados e processos.",
-  },
-  {
-    slug: "senior",
-    nome: "Maturidade Sênior",
-    preco: 488,
-    destaque: false,
-    descricao:
-      "Para quem busca subir de nível com eficiência operacional e profissionalismo de empresa grande.",
-  },
+  { slug: "junior", preco: 188, destaque: false },
+  { slug: "pleno", preco: 388, destaque: true },
+  { slug: "senior", preco: 488, destaque: false },
 ];

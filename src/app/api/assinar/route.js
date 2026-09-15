@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { MercadoPagoConfig, PreApproval } from "mercadopago";
+import { getTranslations } from "next-intl/server";
 import { planos, precoTotalAnual } from "@/data/planos";
 import { obterIpCliente, verificarLimite } from "@/lib/rateLimit";
+import { routing } from "@/i18n/routing";
 
 const SITE_URL = "https://www.oprtec.com.br";
 const TRIAL_DAYS = 10;
@@ -10,28 +12,39 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request) {
   const ip = obterIpCliente(request);
   const { permitido } = verificarLimite(ip);
-  if (!permitido) {
-    return NextResponse.json(
-      { error: "Muitas tentativas. Aguarde alguns minutos e tente novamente." },
-      { status: 429 }
-    );
-  }
 
   const body = await request.json();
-  const { plano: slug, ciclo, cardTokenId, email, nomeEstabelecimento, aceitouTermos } = body;
+  const {
+    plano: slug,
+    ciclo,
+    cardTokenId,
+    email,
+    nomeEstabelecimento,
+    aceitouTermos,
+    locale: localeBruto,
+  } = body;
+
+  const locale = routing.locales.includes(localeBruto)
+    ? localeBruto
+    : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "checkoutApi" });
+
+  if (!permitido) {
+    return NextResponse.json({ error: t("muitasTentativas") }, { status: 429 });
+  }
 
   const plano = planos.find((p) => p.slug === slug);
   if (!plano) {
-    return NextResponse.json({ error: "Plano inválido." }, { status: 400 });
+    return NextResponse.json({ error: t("planoInvalido") }, { status: 400 });
   }
 
   if (!email || !EMAIL_REGEX.test(email)) {
-    return NextResponse.json({ error: "E-mail inválido." }, { status: 400 });
+    return NextResponse.json({ error: t("emailInvalido") }, { status: 400 });
   }
 
   if (!aceitouTermos) {
     return NextResponse.json(
-      { error: "É necessário aceitar os Termos de Uso e a Política de Privacidade." },
+      { error: t("precisaAceitarTermos") },
       { status: 400 }
     );
   }
@@ -39,7 +52,7 @@ export async function POST(request) {
   const nomeLimpo = String(nomeEstabelecimento || "").trim().replace(/::/g, "-").slice(0, 80);
   if (!nomeLimpo) {
     return NextResponse.json(
-      { error: "Informe o nome do estabelecimento." },
+      { error: t("informeEstabelecimento") },
       { status: 400 }
     );
   }
@@ -69,7 +82,7 @@ export async function POST(request) {
 
   if (!cardTokenId) {
     return NextResponse.json(
-      { error: "Dados do cartão ausentes." },
+      { error: t("dadosCartaoAusentes") },
       { status: 400 }
     );
   }
@@ -77,10 +90,7 @@ export async function POST(request) {
   const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
   if (!accessToken) {
     return NextResponse.json(
-      {
-        error:
-          "Pagamento ainda não configurado. Defina MERCADOPAGO_ACCESS_TOKEN nas variáveis de ambiente.",
-      },
+      { error: t("pagamentoNaoConfigurado") },
       { status: 500 }
     );
   }
@@ -91,7 +101,7 @@ export async function POST(request) {
   try {
     const result = await preApproval.create({
       body: {
-        reason: `Plano ${plano.nome} — OPRtec (${anual ? "anual" : "mensal"})`,
+        reason: `Plano ${plano.slug} — OPRtec (${anual ? "anual" : "mensal"})`,
         // Formato "slug::nome do estabelecimento" — o webhook em integracoes-gateway
         // usa isso pra saber qual plano liberar e, se o cliente ainda não existir,
         // com que nome criar o cadastro automaticamente.
@@ -107,9 +117,6 @@ export async function POST(request) {
     return NextResponse.json({ id: result.id, status: result.status });
   } catch (error) {
     console.error("Erro ao criar assinatura:", error);
-    return NextResponse.json(
-      { error: "O Mercado Pago recusou os dados do cartão. Confira e tente de novo." },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: t("cartaoRecusado") }, { status: 400 });
   }
 }

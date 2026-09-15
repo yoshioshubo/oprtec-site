@@ -1,0 +1,610 @@
+{
+  "metadata": {
+    "title": "OPRtec — Smart management for bars and restaurants",
+    "description": "AI-powered management products that help bar and restaurant owners cut costs and organize their KPIs."
+  },
+  "header": {
+    "inicio": "Home",
+    "metodo": "Method",
+    "produtos": "Solutions",
+    "sobre": "About",
+    "cases": "Cases",
+    "contato": "Contact",
+    "abrirMenu": "Open menu",
+    "cta": "Book assessment"
+  },
+  "footer": {
+    "direitos": "© {ano} OPRtec — Organization, Processes and Results.",
+    "produtos": "Solutions",
+    "sobre": "About",
+    "contato": "Contact",
+    "termos": "Terms of Use",
+    "privacidade": "Privacy"
+  },
+  "termos": {
+    "metaTitle": "Terms of Use — OPRtec",
+    "badge": "Legal documents",
+    "titulo": "Terms of Use",
+    "atualizadoEm": "Last updated: August 23, 2026.",
+    "s1Titulo": "1. About these Terms",
+    "s1Texto": "These Terms of Use govern the contracting and use of <strong>OPRtec</strong>'s products and services, owned by <strong>OPR CONSULTORIA LTDA</strong>, a company registered in Brazil under CNPJ <strong>67.665.959/0001-17</strong>, headquartered at Rua Doutor Donato Pinto, 598, Parque Imperial, Brazil (“OPRtec”, “we”). By subscribing to any plan or using the site, you (“customer”, “you”) fully agree to these Terms.",
+    "s2Titulo": "2. What we offer",
+    "s2Texto": "OPRtec offers AI-powered management modules for bars and restaurants, organized into plans (Júnior, Pleno and Sênior) that unlock different sets of features, as described on the <linkProdutos>Solutions</linkProdutos> and <linkPlanos>Plans</linkPlanos> pages.",
+    "s3Titulo": "3. Subscribing, pricing and payment method",
+    "s3TextoA": "Plans can be purchased on a monthly or annual cycle. On the monthly cycle, billing is recurring, for the same amount, every month. On the annual cycle, billing is a <strong>single upfront charge</strong> to your credit card, for the total annual amount shown at checkout before confirmation — the “per month” figure shown next to the annual plan is only a monthly-equivalent reference, not an installment charge.",
+    "s3TextoB": "Payment is processed by a payment partner (Mercado Pago). OPRtec does not store your credit card number on its own servers.",
+    "s4Titulo": "4. Automatic renewal",
+    "s4Texto": "All plans renew automatically: at the end of each cycle (monthly or annual), a new charge is made automatically to the same card, for the then-current amount, unless previously cancelled by the customer. This is explicitly disclosed at the time of purchase, at checkout.",
+    "s5Titulo": "5. Right of withdrawal (Art. 49 of Brazil's Consumer Protection Code)",
+    "s5TextoA": "You have the right to withdraw from the purchase within <strong>7 (seven) calendar days</strong> of the subscription date, with no need to justify it, and with the right to a full refund of the amount paid. To exercise this right, simply contact us through the channels listed in the “Contact” section below. The refund is processed to the same payment method used in the purchase.",
+    "s5TextoB": "This right of withdrawal is distinct from the free trial period offered on some plans: even after the free trial ends, the legal right of withdrawal remains valid within the 7-calendar-day window counted from the subscription date.",
+    "s6Titulo": "6. Cancellation",
+    "s6Texto": "Outside the withdrawal period, you can cancel automatic renewal at any time, through the subscribed tool's dashboard or through the contact channels listed below. Cancellation stops future charges; access to the contracted modules remains active until the end of the already-paid cycle, with no penalty and no need to justify it.",
+    "s7Titulo": "7. Service availability",
+    "s7Texto": "OPRtec makes its best efforts to keep the service continuously available, but occasional interruptions for maintenance, updates, or factors beyond our control may occur. We will communicate significant downtime whenever possible.",
+    "s8Titulo": "8. Acceptable use and intellectual property",
+    "s8Texto": "Access is personal and non-transferable to the subscribing establishment. Reselling, sublicensing or reverse-engineering the tool is prohibited. All OPRtec software, branding and content are its exclusive property.",
+    "s9Titulo": "9. Changes to these Terms",
+    "s9Texto": "We may update these Terms periodically. Material changes will be communicated by email or a notice on the site, with reasonable notice before they take effect.",
+    "s10Titulo": "10. Governing law and jurisdiction",
+    "s10Texto": "These Terms are governed by Brazilian law, particularly the Consumer Protection Code (Law No. 8,078/1990) and the General Data Protection Law (Law No. 13,709/2018). The jurisdiction of the consumer's domicile is elected to settle any disputes.",
+    "s11Titulo": "11. Contact",
+    "s11Texto": "Questions, cancellations and withdrawal requests can be sent to <linkEmail>oprconsultorias@gmail.com</linkEmail> or through the <linkContato>Contact</linkContato> page."
+  },
+  "privacidade": {
+    "metaTitle": "Privacy Policy — OPRtec",
+    "badge": "Legal documents",
+    "titulo": "Privacy Policy",
+    "atualizadoEm": "Last updated: August 23, 2026.",
+    "s1Titulo": "1. Who we are",
+    "s1Texto": "This Privacy Policy describes how <strong>OPRtec</strong> (<strong>OPR CONSULTORIA LTDA</strong>, CNPJ <strong>67.665.959/0001-17</strong>, headquartered at Rua Doutor Donato Pinto, 598, Parque Imperial, Brazil), as data controller, collects, uses and protects the personal data of this site's visitors and customers, in accordance with Brazil's General Data Protection Law (Law No. 13,709/2018 — LGPD).",
+    "s2Titulo": "2. What data we collect",
+    "s2Texto": "We collect only what's strictly necessary to handle your contact request or process your subscription:",
+    "s2Item1Label": "Contact form:",
+    "s2Item1Texto": "name, business name, WhatsApp number, and the message you write.",
+    "s2Item2Label": "Checkout / subscription:",
+    "s2Item2Texto": "name, tax ID, email, and credit card details — the latter are entered directly on Mercado Pago's secure screen and never reach our servers; we only receive a billing authorization token.",
+    "s3Titulo": "3. What we use your data for",
+    "s3Texto": "We use your data to: respond to your contact request, process payment and billing, grant access to the contracted modules, provide support, and comply with legal and tax obligations. We only send offer or news emails if you explicitly check that option at sign-up.",
+    "s4Titulo": "4. Where your data is stored",
+    "s4Texto": "Data submitted through the contact form is stored on Firebase (Google Cloud). Payment data is processed and stored by Mercado Pago, a PCI-DSS certified payment processor — OPRtec has no access to your full card number.",
+    "s5Titulo": "5. How long we keep it",
+    "s5Texto": "We keep your data for as long as needed to fulfill the purpose it was collected for and any applicable legal and tax obligations (such as keeping invoices), and it may be deleted upon request when there is no legal basis for retention.",
+    "s6Titulo": "6. Who we share it with",
+    "s6Texto": "We share data only with providers necessary to operate the service: Mercado Pago (payment processing), Firebase/Google Cloud (lead storage) and, when applicable, an electronic invoicing provider. We do not sell your data to third parties.",
+    "s7Titulo": "7. Cookies",
+    "s7Texto": "This site uses only cookies essential to its operation. Should we come to use third-party cookies for traffic analytics or advertising (such as Meta or Google), the cookie banner shown on your first visit will let you accept or reject non-essential cookies before continuing to browse.",
+    "s8Titulo": "8. Your rights as a data subject",
+    "s8Texto": "Under the LGPD, you may request at any time: confirmation that processing exists, access, correction, anonymization, portability, deletion of your data, information about sharing, and withdrawal of consent given.",
+    "s9Titulo": "9. How to exercise your rights",
+    "s9Texto": "Send your request to <linkEmail>oprconsultorias@gmail.com</linkEmail>. We will respond within the applicable legal deadline.",
+    "s10Titulo": "10. Changes to this Policy",
+    "s10Texto": "We may update this Policy periodically. The date of the last update is always shown at the top of this page."
+  },
+  "checkout": {
+    "metaTitle": "Complete your subscription — OPRtec",
+    "mpLocale": "en-US",
+    "planoNaoEncontradoTitulo": "Plan not found",
+    "planoNaoEncontradoTexto": "Go back to the plans page and choose one of the available options.",
+    "verPlanos": "View plans",
+    "badge": "Complete your subscription",
+    "tituloPlano": "{nome} Plan",
+    "diasGratis": "{dias}-day free trial",
+    "cobrancaAnual": "Annual billing",
+    "cobrancaMensal": "Monthly billing",
+    "porMesAposTeste": "/mo after the trial period",
+    "cobrancaUnica": "Single upfront credit card charge: R$ {valor} (not installments)",
+    "voceEconomiza": "You save R$ {valor}/year",
+    "avisoTeste": "Your card will be validated now, but you'll only be charged after {dias} days. If you don't want to continue, cancel before the trial period ends — billing is automatic if the subscription isn't cancelled by then.",
+    "avisoArrependimento": "You have <strong>7 calendar days</strong> after signing up to withdraw and request a full refund, with no need to justify it (right of withdrawal under Art. 49 of Brazil's Consumer Protection Code). See the details in our <link>Terms of Use</link>.",
+    "form": {
+      "carregando": "Loading payment form…",
+      "nomeEstabelecimento": "Business name",
+      "nomeEstabelecimentoPlaceholder": "e.g. Bacco Restaurant",
+      "nomeEstabelecimentoAjuda": "We use this name to set up your tool's access.",
+      "aceito": "I have read and accept the <linkTermos>Terms of Use</linkTermos> and the <linkPrivacidade>Privacy Policy</linkPrivacidade>.",
+      "marketing": "I want to receive OPRtec offers and news by email.",
+      "preenchaAntes": "Enter your business name and check the box above to unlock the payment form.",
+      "recusadoTitulo": "Payment declined",
+      "tentarNovamente": "Try again",
+      "confirmandoTitulo": "Confirming your subscription…",
+      "confirmandoTexto": "Don't close or refresh this page.",
+      "aprovadoTitulo": "Payment approved!",
+      "redirecionando": "Redirecting…",
+      "seguranca": "Payment processed securely by Mercado Pago. Your card details never touch our server.",
+      "erroGenerico": "We couldn't confirm the subscription.",
+      "erroCatch": "We couldn't confirm the subscription. Please try again.",
+      "erroBrick": "Mercado Pago couldn't process the card details. Please check the number, expiration and security code, and try again."
+    },
+    "sucesso": {
+      "metaTitle": "Subscription confirmed — OPRtec",
+      "titulo": "Subscription confirmed!",
+      "texto": "We've received your payment details. We'll be in touch shortly to start setting up your OPRtec plan.",
+      "voltar": "Back to home"
+    }
+  },
+  "planos": {
+    "metaTitle": "Get Your Plan — OPRtec",
+    "badge": "Plans",
+    "titulo": "Get your plan",
+    "subtitulo": "Choose the plan that matches your operation's maturity level today.",
+    "economize": "💰 Save {pct}% with the annual plan",
+    "mensal": "Monthly",
+    "anual": "Annual",
+    "maisPopular": "Most popular",
+    "porMes": "/mo",
+    "cobradoUmaVez": "Billed once a year (R$ {valor})",
+    "voceEconomiza": "You save R$ {valor}/year",
+    "quero": "I want this plan",
+    "incluidoTitulo": "What's included in each plan",
+    "incluidoSubtitulo": "Each level includes every feature from the previous levels, plus its own.",
+    "funcaoLabel": "Feature",
+    "incluido": "Included",
+    "naoIncluido": "Not included",
+    "items": {
+      "junior": {
+        "nome": "Júnior Maturity",
+        "descricao": "For those just starting to organize their operation and want a low-friction first step."
+      },
+      "pleno": {
+        "nome": "Pleno Maturity",
+        "descricao": "For those who already have some structure and want full visibility into data and processes."
+      },
+      "senior": {
+        "nome": "Sênior Maturity",
+        "descricao": "For those aiming to level up with the operational efficiency and professionalism of a large company."
+      }
+    },
+    "funcionalidades": {
+      "kpi-financeiro": "Financial KPIs",
+      "controle-bebidas": "Drink Control",
+      "reservas": "Reservations",
+      "avaliacao-cliente": "Customer Feedback",
+      "controle-contratos": "Contract Control",
+      "controle-estoque": "Stock Control",
+      "mao-de-obra": "Labor (M.O)",
+      "dre": "P&L",
+      "inventario": "Inventory",
+      "calculadora-impostos": "Tax Calculator",
+      "conciliacao-bancaria": "Bank Reconciliation",
+      "ficha-tecnica-inteligente": "Smart Technical Sheet",
+      "checklist": "Checklist",
+      "mapa-compras": "Purchasing Map",
+      "fluxo-caixa": "Cash Flow",
+      "concessionarias": "Utilities",
+      "mapa-manutencao": "Maintenance Map"
+    }
+  },
+  "checkoutApi": {
+    "muitasTentativas": "Too many attempts. Please wait a few minutes and try again.",
+    "planoInvalido": "Invalid plan.",
+    "emailInvalido": "Invalid email.",
+    "precisaAceitarTermos": "You must accept the Terms of Use and Privacy Policy.",
+    "informeEstabelecimento": "Please enter your business name.",
+    "dadosCartaoAusentes": "Missing card details.",
+    "pagamentoNaoConfigurado": "Payment is not configured yet. Set MERCADOPAGO_ACCESS_TOKEN in the environment variables.",
+    "cartaoRecusado": "Mercado Pago declined the card details. Please check and try again."
+  },
+  "produtos": {
+    "metaTitle": "Solutions — OPRtec",
+    "badge": "Solutions",
+    "titulo": "À la carte solutions",
+    "subtitulo": "Each module solves a specific day-to-day problem for bars and restaurants. Plans unlock module access based on your operation's maturity level.",
+    "cta": "Book a Free Assessment",
+    "items": {
+      "controle-de-bebidas": {
+        "nome": "Drink Control",
+        "tags": [
+          "Intake",
+          "Auditing",
+          "LOG"
+        ],
+        "resumo": "A bottle that leaves the stockroom without going through the register is money evaporating every single day.",
+        "descricao": "The module logs every drink coming in and out with full auditing, cross-checking what was bought against what was sold — so you can shut the leak on waste for good."
+      },
+      "controle-de-estoque": {
+        "nome": "Stock Control",
+        "tags": [
+          "Cost Centers",
+          "Average Cost",
+          "Auditing"
+        ],
+        "resumo": "As long as the owner doesn't treat stock as the company's vault, money keeps disappearing from the bottom line.",
+        "descricao": "Real control goes beyond counting items: you need to know where the money goes when it leaves the vault."
+      },
+      "reservas": {
+        "nome": "Reservations",
+        "tags": [
+          "Requests",
+          "Confirmation",
+          "Public Link"
+        ],
+        "resumo": "In the middle of the rush, that reservation scribbled on a scrap of paper gets lost in the chaos at the register. Now what?",
+        "descricao": "With a public reservation link and automatic confirmation, that embarrassment never happens again — and it makes your service look a lot more professional too."
+      },
+      "ficha-tecnica-inteligente": {
+        "nome": "Smart Technical Sheet",
+        "tags": [
+          "Technical Sheet",
+          "Menu Engineering",
+          "Target Food Cost"
+        ],
+        "resumo": "A technical sheet is the basics. Knowing what to push, and when, to maximize your result is the real challenge.",
+        "descricao": "With Target Food Cost, you generate sales guidance for your team and contribute directly to a higher contribution margin."
+      },
+      "mao-de-obra": {
+        "nome": "Labor",
+        "tags": [
+          "Payroll",
+          "Overtime",
+          "Total Cost per Employee"
+        ],
+        "resumo": "What does each dish that leaves your kitchen actually cost, once you count the labor behind it?",
+        "descricao": "The module calculates total cost per employee — payroll, overtime and payroll taxes — and shows the real weight of labor in your operation, dish by dish."
+      },
+      "avaliacao-cliente": {
+        "nome": "Customer Feedback",
+        "tags": [
+          "Own App",
+          "Average Rating",
+          "Responses"
+        ],
+        "resumo": "An unhappy customer doesn't complain at the counter — they just don't come back.",
+        "descricao": "A dedicated app captures each customer's rating automatically and rolls up the average score, so you can act before the silence turns into an empty table."
+      },
+      "check-list": {
+        "nome": "Checklist",
+        "resumo": "Quality opening and closing routines can't depend on whoever happens to be on shift that day remembering everything.",
+        "descricao": "Digital checklists make sure no step of the operation gets skipped, with automatic logging of who did what and when."
+      },
+      "dre": {
+        "nome": "P&L",
+        "tags": [
+          "Revenue",
+          "Food Cost",
+          "Expenses",
+          "Net Result"
+        ],
+        "resumo": "Ever imagined driving a car with no speedometer, no fuel gauge and no tire pressure check?",
+        "descricao": "That's how many business owners run their companies — and then don't understand why it gets fined, stumbles through hard times, and breaks down along the way. A management P&L is the dashboard that was missing: strategic information to decide with confidence, at the right speed for every stretch of road."
+      },
+      "kpi-op-fin": {
+        "nome": "OPS/FIN KPIs",
+        "tags": [
+          "Revenue",
+          "Food Cost",
+          "Average Ticket",
+          "Comparison"
+        ],
+        "resumo": "Working with goals is working with purpose.",
+        "descricao": "Revenue, food cost, average ticket and comparisons — all in a single dashboard, so you make decisions every day with a clear direction, not on gut feeling."
+      },
+      "conciliacao-bancaria": {
+        "nome": "Bank Reconciliation",
+        "resumo": "Selling without knowing whether you actually got paid for it is walking in the dark.",
+        "descricao": "Automatic bank reconciliation gives you the peace of mind of knowing every bit of your effort is actually being rewarded, without needing to keep someone on staff just for that."
+      },
+      "inventario": {
+        "nome": "Inventory",
+        "tags": [
+          "Intake",
+          "Auditing",
+          "LOG"
+        ],
+        "resumo": "A stock count done carelessly is a wrong decision made with wrong data.",
+        "descricao": "The inventory module logs every count with full auditing and history, so your balance sheet matches reality — not an estimate."
+      },
+      "mapa-de-compras": {
+        "nome": "Purchasing Map",
+        "tags": [
+          "Suppliers",
+          "Purchases",
+          "Dashboard"
+        ],
+        "resumo": "Buying without visibility into what's already in stock means paying twice for the same thing.",
+        "descricao": "A single dashboard for suppliers and purchases shows you what to order, from whom, and when — so money sitting on a shelf never catches you off guard again."
+      },
+      "controle-de-contratos": {
+        "nome": "Contract Control",
+        "tags": [
+          "Expiration Dates",
+          "Critical Review",
+          "WhatsApp Alerts"
+        ],
+        "resumo": "A contract that expires without anyone noticing means a fine, a missed adjustment, or an auto-renewal nobody wanted.",
+        "descricao": "An expiration dashboard with automatic WhatsApp alerts, critical review of fines and sensitive clauses, and a full change history — so no deadline ever catches you off guard again."
+      },
+      "concessionarias": {
+        "nome": "Utilities",
+        "tags": [
+          "Water",
+          "Power",
+          "Gas",
+          "Meters & Dashboard"
+        ],
+        "resumo": "Water, power and gas weigh on the bill — but almost nobody tracks them closely.",
+        "descricao": "The utilities module organizes consumption and cost of your operation's essential services, with optional daily readings via WhatsApp, so you catch waste before it turns into a bill."
+      },
+      "mapa-de-manutencao": {
+        "nome": "Maintenance Map",
+        "tags": [
+          "Tickets",
+          "Quotes",
+          "Suppliers",
+          "SLA"
+        ],
+        "resumo": "Equipment that breaks down mid-service costs a lot more than the maintenance you kept putting off.",
+        "descricao": "A maintenance map with tickets, quotes and supplier SLAs keeps the fridge, oven and grill from breaking down right on your busiest day."
+      },
+      "fluxo-de-caixa": {
+        "nome": "Cash Flow",
+        "tags": [
+          "Accounts",
+          "Balances",
+          "Transfers"
+        ],
+        "resumo": "Knowing you sold well doesn't pay the bills — only the real cash balance does.",
+        "descricao": "Control of bank accounts, opening balance, transfers between accounts, and every payment going out — so you're never caught off guard by a cash balance that looked full but wasn't."
+      }
+    }
+  },
+  "cases": {
+    "metaTitle": "Cases — OPRtec",
+    "badge": "Cases",
+    "titulo": "Real results",
+    "subtitulo": "Some of the businesses we've already reorganized with the OPR method.",
+    "problemaLabel": "Problem",
+    "solucaoLabel": "What we did",
+    "items": {
+      "confeitaria-vilamore": {
+        "cliente": "Confeitaria Vilamore",
+        "problema": "Operational inefficiency from a lack of organization and production processes.",
+        "solucao": "ABC curve analysis, diagnosing products that consumed a lot of production time while selling little, and applying the 5S method to cut time lost on unnecessary movement.",
+        "resultados": [
+          "8.5% cut in food cost",
+          "3 hours/day of work saved",
+          "30% cut in labor cost"
+        ]
+      },
+      "pizzaria-danthero": {
+        "cliente": "Pizzaria D'Anthero",
+        "problema": "High food cost from a lack of standardization in assembling the pizza.",
+        "solucao": "Identified that the weights specified in the technical sheets weren't being followed; implemented ahead-of-time prep with audited weighing before the rush.",
+        "resultados": [
+          "5.2% cut in food cost",
+          "Better use of labor and faster prep",
+          "7% increase in sales"
+        ]
+      },
+      "cultural-bar": {
+        "cliente": "Cultural Bar",
+        "problema": "Drink sales going unbilled, hurting revenue.",
+        "solucao": "Daily drink-count control with AI-based auditing.",
+        "resultados": [
+          "9% reduction in losses from unbilled sales"
+        ]
+      },
+      "rede-hoteleira": {
+        "cliente": "Hotel Chain",
+        "problema": "Lack of control over breakfast check-ins.",
+        "solucao": "Automated the guest list, enabling online tracking of check-ins and understanding of the hourly consumption curve.",
+        "resultados": [
+          "11% cut in production cost of breakfast items"
+        ]
+      },
+      "churrascaria-chimarron": {
+        "cliente": "Churrascaria Chimarron",
+        "problema": "High food cost on the all-you-can-eat meat service and an administration with no professional structure.",
+        "solucao": "Structured and professionalized the administration, with food cost control on the meat service.",
+        "resultados": [
+          "18.33% cut in meat service food cost",
+          "8% increase in average ticket",
+          "Structured, professional administration"
+        ]
+      },
+      "churrascaria-lago-sul": {
+        "cliente": "Churrascaria Lago Sul",
+        "problema": "Administration without professional processes and no target-based financial control.",
+        "solucao": "Professionalized the administration and set up financial control with targets and KPIs.",
+        "resultados": [
+          "15.4% cut in food cost",
+          "Professionalized administration",
+          "Financial control with targets and KPIs"
+        ]
+      },
+      "poleiro-do-galo": {
+        "cliente": "Poleiro do Galo",
+        "problema": "High gas, power and water expenses weighing on the bottom line.",
+        "solucao": "Control and reduction of gas, power and water expenses.",
+        "resultados": [
+          "Over R$ 3.5k/month saved on gas, power and water",
+          "#1 on Tripadvisor"
+        ]
+      },
+      "hamburgueria-gruta": {
+        "cliente": "Hamburgueria Gruta",
+        "problema": "Unstructured financial management and food cost above target.",
+        "solucao": "Implemented financial BPO and the Smart Recipe Card to control food cost.",
+        "resultados": [
+          "Financial BPO implemented",
+          "5 pp cut in food cost with the Smart Recipe Card"
+        ]
+      },
+      "butiquim-bistro": {
+        "cliente": "Butiquim Bistrô",
+        "problema": "Physical disorganization and processes that drove up labor and food costs.",
+        "solucao": "Physical organization of the space and improvement of operating processes.",
+        "resultados": [
+          "4.3 pp cut in labor and food costs",
+          "Organized physical environment"
+        ]
+      }
+    },
+    "ctaTitulo": "Want results like these in your business?",
+    "ctaBotao": "Book a Free Assessment"
+  },
+  "home": {
+    "heroBadge": "For bars and restaurants that want real results.",
+    "heroTitulo": "Eliminate waste and <cyan>increase</cyan> your <cyan>profit</cyan>",
+    "heroTexto": "Turn day-to-day chaos into predictable results. Our technology works directly on your business's organization and processes, with no need for you to become a specialist.",
+    "ctaAvaliacao": "Book a Free Assessment",
+    "dorTitulo": "Your kitchen runs fine, but the money doesn't add up?",
+    "dores": {
+      "cmv": {
+        "titulo": "Food cost through the roof",
+        "descricao": "Technical sheets sitting dead in a spreadsheet, while your cook keeps tweaking the recipe bit by bit."
+      },
+      "madrugada": {
+        "titulo": "Closing the register at midnight",
+        "descricao": "Closing out the day eats into your late-night hours — time that should be with family or resting."
+      },
+      "dre": {
+        "titulo": "No up-to-date P&L",
+        "descricao": "Decisions made on gut feeling, because the P&L only shows up (if it shows up) weeks after the month closes."
+      }
+    },
+    "metodoBadge": "The OPR Method",
+    "metodoTitulo": "We deliver <cyan>solutions</cyan>, not tools",
+    "esteiraTitulo": "A ladder of solutions, from the first step to full management",
+    "esteira": {
+      "junior": {
+        "nome": "Júnior Maturity Level",
+        "descricao": "This is the moment to take your business off autopilot. You start seeing it clearly, take the first step toward turning intuition into method, and lay the groundwork for an operation that goes beyond day-to-day firefighting."
+      },
+      "pleno": {
+        "nome": "Pleno Maturity Level",
+        "descricao": "The house is already in order — now it's time to go deeper. You start tracking every gear of the business up close, get ahead of problems before they turn into losses, and run the operation with confidence instead of improvisation."
+      },
+      "senior": {
+        "nome": "Sênior Maturity Level",
+        "descricao": "Your business runs with the precision of a real, large-scale operation. Processes run on their own, decisions are made with data in hand, and you finally have the time and freedom to think strategy — not just put out fires."
+      }
+    },
+    "ctaFinalTitulo": "Find out which solution fits where you are right now.",
+    "ctaAvaliacaoCurto": "Book free assessment",
+    "ctaMicro": "Free · no commitment",
+    "metodoIntro": "We put the house in order first; technology comes after. That's how results actually show up.",
+    "pilares": {
+      "organizacao": {
+        "nome": "Organization",
+        "descricao": "Physical and mental environment in order, using the 5S philosophy. It's the soil everything grows from."
+      },
+      "processos": {
+        "nome": "Processes",
+        "descricao": "Recipe cards, routines and controls your team can actually follow every day."
+      },
+      "resultados": {
+        "nome": "Results",
+        "descricao": "Food cost, expenses and targets tracked with data and AI, so you decide on facts, not gut feeling."
+      }
+    },
+    "metodoLink": "Explore the full method",
+    "resultadosLabel": "Results achieved",
+    "resultados": [
+      {
+        "valor": "+R$ 192M",
+        "descricao": "in revenue"
+      },
+      {
+        "valor": "−327 tons",
+        "descricao": "of waste"
+      },
+      {
+        "valor": "R$ 9.8M",
+        "descricao": "in cost reductions"
+      },
+      {
+        "valor": "+19k hours",
+        "descricao": "of consulting"
+      }
+    ],
+    "resultadosLink": "See all case studies"
+  },
+  "sobre": {
+    "metaTitle": "About — OPRtec",
+    "badge": "About OPRtec",
+    "titulo": "Organization is the foundation for results.",
+    "intro": "Hands-on experience, method and technology to turn food-service operations into lighter, more consistent, more profitable businesses.",
+    "bio": "A Production Engineer with over 25 years of business management experience — across multinationals and my own ventures — I've spent the last 14 years focused on the food-service industry. In that time I built up deep expertise restructuring companies in the sector: over 1,000 clients served, of every kind — steakhouses, bars, restaurants, burger joints, pizzerias, Japanese food, bakeries, and hotel F&B, among others.",
+    "metodoLabel": "The OPR method",
+    "metodoTitulo": "The starting point is putting the house in order.",
+    "metodoP1": "Through that learning process, I understood that the biggest obstacle to achieving real results was the lack of organization in whoever decides to open or lead the company. That's why I created the <strong>OPR</strong> method — Organization, Processes and Results — where priority number one is organizing the physical and mental environment of the people involved in the operation. Talking about processes, technical sheets and training means little in an environment where disorganization prevails: organizing the business methodically and with discipline is the structural foundation for implementing processes that well-trained people can actually follow.",
+    "metodoP2": "Within the method, we pursue not only financial results, but also the results that lead to health and well-being inside the company, at home, and in the entrepreneur's social life. Our goal is for life to prevail in abundance, so the business becomes just the part that lets the entrepreneur meet their worldly needs — not a weight to carry. Artificial intelligence is only a time-optimization tool, one that lets the entrepreneur stay focused on strategy and on the purpose of their life. Organization and cleanliness have to be taken seriously — they're the foundation for the success of any business.",
+    "metodoP3": "I turn kitchen chaos into a high-precision operation with predictable profitability, combining a production engineer's perspective with over 15 years of hands-on experience in the food-service market. Through a surgical methodology that eliminates invisible waste, optimizes production flow and recalculates every margin in your business, I deliver real results that go far beyond theory. I don't sell lectures or cookie-cutter reports — I deliver end-to-end solutions focused entirely on operational efficiency and growing your net profit.",
+    "visaoLabel": "Vision",
+    "visaoTexto": "To be the leading reference in integrated management between self-awareness and technology, turning chaos into order to accelerate results.",
+    "missaoLabel": "Mission",
+    "missaoTexto": "Cut your costs and put money back in your pocket!",
+    "valoresLabel": "Values",
+    "valores": {
+      "respeito": {
+        "nome": "Respect",
+        "descricao": "Valuing people, the environment and time at every step of the process."
+      },
+      "humildade": {
+        "nome": "Humility",
+        "descricao": "Keeping a learner's mindset to keep evolving with technology and practice."
+      },
+      "desenvolvimento": {
+        "nome": "Development",
+        "descricao": "Pursuing continuous improvement across mindset, method and tools."
+      },
+      "organizacao": {
+        "nome": "Organization",
+        "descricao": "Structuring the present to guarantee consistency and clarity in the future."
+      }
+    },
+    "proximoPassoLabel": "Next step",
+    "proximoPassoTitulo": "Your operation can start changing today.",
+    "proximoPassoBotao": "Book a Free Assessment",
+    "filosofiaLabel": "The philosophy behind the method",
+    "filosofiaTitulo": "Organization, Processes and Results.",
+    "filosofiaQuote": "As Friedrich Nietzsche wrote, \"He who has a why can bear almost any how.\" Our method goes beyond AI technology and draws on stoic philosophy, guiding the business owner to understand their purpose and the why behind what needs to be done.",
+    "filosofiaP1": "Physical disorder in an operation is, above all, a reflection of the chaos that prevails in the mind of whoever leads it. Only in an organized environment, with purpose and energy, can you sustain processes that truly raise productivity.",
+    "filosofiaP2": "The OPR Method integrates 5S work philosophy to bring people and environment into full alignment. AI and advanced technology tools only thrive once that harmony is already in place.",
+    "filosofiaP3": "It's like preparing the soil: no matter how good the seed, it won't grow in bad ground. We prepare your ground for growth.",
+    "filosofiaP4": "At OPRtec, we believe every business has its own timing. By filling out the <link>\"Book a Free Assessment\"</link> diagnostic, we identify your company's maturity level to point you straight at the solutions you actually need right now. Our commitment is to your practical results: we don't sell tools your operation isn't yet structured to absorb.",
+    "filosofiaP5": "We split the business journey into three stages: Júnior, Pleno and Sênior. Each level unlocks access to a specific set of solutions.",
+    "filosofiaP6": "If your goal is to get organized and level up, we offer personalized consulting to prepare the ground for your growth. And to keep guiding your journey, check out our videos on YouTube <link>@yoshioshubo</link> with reflections and practical strategies for the day-to-day of running a business."
+  },
+  "contato": {
+    "metaTitle": "Contact — OPRtec",
+    "badge": "Talk to us",
+    "titulo": "Schedule a conversation",
+    "subtitulo": "Get in touch.",
+    "form": {
+      "nome": "Name",
+      "estabelecimento": "Business name",
+      "whatsapp": "WhatsApp",
+      "desafio": "What's your main challenge today?",
+      "aceito": "I have read and accept the <link>Privacy Policy</link>.",
+      "enviar": "Send",
+      "alertaAceite": "You need to accept the Privacy Policy to submit.",
+      "sucesso": "Information sent successfully!",
+      "erro": "Something went wrong. Please try again."
+    },
+    "canaisTitulo": "Prefer to reach us directly?",
+    "canalWhatsapp": "WhatsApp",
+    "canalTelefone": "Phone",
+    "canalEmail": "Email"
+  },
+  "cookieBanner": {
+    "texto": "We use essential cookies for the site to work. Non-essential cookies (like analytics or advertising) are only activated with your consent. See our <link>Privacy Policy</link>.",
+    "rejeitar": "Reject non-essential",
+    "aceitar": "Accept all"
+  },
+  "avaliacao": {
+    "metaTitle": "Free Assessment — OPRtec",
+    "badge": "Free assessment",
+    "titulo": "Find out your business's maturity level",
+    "subtitulo": "Fill in the diagnostic below so we can identify your operation's maturity level and the solutions it needs right now.",
+    "formNota": "The form is currently in Portuguese.",
+    "whatsappTexto": "Prefer to talk directly?",
+    "whatsappBotao": "Chat on WhatsApp",
+    "abrirNovaAba": "Didn't load? Open the form in a new tab"
+  },
+  "whatsapp": {
+    "label": "Chat on WhatsApp",
+    "mensagem": "Hi! I found OPRtec's website and would like to know more."
+  }
+}
