@@ -7,7 +7,30 @@ service cloud.firestore {
         && request.resource.data.estabelecimento is string && request.resource.data.estabelecimento.size() < 200
         && request.resource.data.whatsapp is string && request.resource.data.whatsapp.size() < 30
         && request.resource.data.desafio is string && request.resource.data.desafio.size() < 2000
-        && request.resource.data.status == 'novo';
+        && request.resource.data.status == 'novo'
+        && request.resource.data.criadoEm is timestamp
+        && request.resource.data.criadoEm > request.time - duration.value(10, 'm')
+        && request.resource.data.criadoEm < request.time + duration.value(10, 'm');
+      allow read, update, delete: if false;
+    }
+
+    // Prova de consentimento do checkout (LGPD): escrita pela rota /api/assinar
+    // depois do pagamento autorizado. Ninguem le, altera nem apaga pelo cliente -
+    // a consulta e feita pelo console do Firebase.
+    match /consentimentos/{consentimentoId} {
+      allow create: if request.resource.data.keys().hasOnly(['email','estabelecimento','plano','ciclo','aceitouTermos','aceitouMarketing','preapprovalId','versaoDocumentos','origem','criadoEm'])
+        && request.resource.data.email is string && request.resource.data.email.size() <= 150
+        && request.resource.data.estabelecimento is string && request.resource.data.estabelecimento.size() <= 100
+        && request.resource.data.plano in ['junior','pleno','senior']
+        && request.resource.data.ciclo in ['mensal','anual']
+        && request.resource.data.aceitouTermos == true
+        && request.resource.data.aceitouMarketing is bool
+        && request.resource.data.preapprovalId is string && request.resource.data.preapprovalId.size() <= 100
+        && request.resource.data.versaoDocumentos is string && request.resource.data.versaoDocumentos.size() <= 20
+        && request.resource.data.origem == 'checkout'
+        && request.resource.data.criadoEm is timestamp
+        && request.resource.data.criadoEm > request.time - duration.value(10, 'm')
+        && request.resource.data.criadoEm < request.time + duration.value(10, 'm');
       allow read, update, delete: if false;
     }
 

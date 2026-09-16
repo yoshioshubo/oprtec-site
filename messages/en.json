@@ -582,7 +582,8 @@
       "alertaAceite": "You need to accept the Privacy Policy to submit.",
       "sucesso": "Information sent successfully!",
       "erro": "Something went wrong. Please try again.",
-      "enviando": "Sending..."
+      "enviando": "Sending...",
+      "muitasTentativas": "You have sent several messages in a row. Try again in a few minutes or message us on WhatsApp."
     },
     "canaisTitulo": "Prefer to reach us directly?",
     "canalWhatsapp": "WhatsApp",

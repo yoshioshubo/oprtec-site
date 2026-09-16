@@ -4,10 +4,14 @@ import { getTranslations } from "next-intl/server";
 import { planos, precoTotalAnual } from "@/data/planos";
 import { obterIpCliente, verificarLimite } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
+import { criarDocumento } from "@/lib/firestoreRest";
 
 const SITE_URL = "https://www.oprtec.com.br";
 const TRIAL_DAYS = 10;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Data da ultima revisao dos Termos e da Politica de Privacidade (ver messages/*.json).
+// Guardada junto do consentimento para saber qual texto a pessoa aceitou.
+const VERSAO_DOCUMENTOS = "2026-08-23";
 
 export async function POST(request) {
   const ip = obterIpCliente(request);
@@ -29,6 +33,7 @@ export async function POST(request) {
     email,
     nomeEstabelecimento,
     aceitouTermos,
+    aceitouMarketing,
     locale: localeBruto,
   } = body;
 
@@ -121,6 +126,27 @@ export async function POST(request) {
         status: "authorized",
       },
     });
+
+    // Prova de consentimento (LGPD, art. 8o, par. 2o): fica registrado o que foi
+    // aceito, quando e em qual versao dos documentos. O checkout ja enviava esses
+    // campos, mas ate aqui ninguem os guardava. Falha no registro nao derruba a
+    // assinatura - o pagamento ja foi autorizado -, so vai para o log.
+    try {
+      await criarDocumento("consentimentos", {
+        email,
+        estabelecimento: nomeLimpo,
+        plano: plano.slug,
+        ciclo: anual ? "anual" : "mensal",
+        aceitouTermos: true,
+        aceitouMarketing: aceitouMarketing === true,
+        preapprovalId: String(result.id || ""),
+        versaoDocumentos: VERSAO_DOCUMENTOS,
+        origem: "checkout",
+        criadoEm: new Date(),
+      });
+    } catch (erroConsentimento) {
+      console.error("Falha ao registrar consentimento:", erroConsentimento);
+    }
 
     return NextResponse.json({ id: result.id, status: result.status });
   } catch (error) {

@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { db } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Link } from "@/i18n/navigation";
 
 // Limites um pouco abaixo dos das regras do Firestore (200/200/30/2000). Sem isso, um
@@ -35,20 +33,34 @@ export default function ContactForm() {
     setStatus({ tipo: "", texto: "" });
 
     try {
-      await addDoc(collection(db, "leads"), {
-        nome: texto("nome"),
-        estabelecimento: texto("estabelecimento"),
-        whatsapp: texto("whatsapp"),
-        desafio: texto("desafio"),
-        status: "novo",
-        criadoEm: serverTimestamp(),
+      // Passa pela nossa rota de API (limite por IP + honeypot) em vez de gravar
+      // direto no Firestore pelo navegador, que aceitava envio em massa de bot.
+      const resposta = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: texto("nome"),
+          estabelecimento: texto("estabelecimento"),
+          whatsapp: texto("whatsapp"),
+          desafio: texto("desafio"),
+          site: texto("site"),
+          aceitouPrivacidade: true,
+        }),
       });
+
+      if (!resposta.ok) {
+        setStatus({
+          tipo: "erro",
+          texto: resposta.status === 429 ? t("muitasTentativas") : t("erro"),
+        });
+        return;
+      }
 
       form.reset();
       setAceitouPrivacidade(false);
       setStatus({ tipo: "ok", texto: t("sucesso") });
     } catch (error) {
-      console.error("Erro ao salvar no Firebase:", error);
+      console.error("Erro ao enviar o contato:", error);
       setStatus({ tipo: "erro", texto: t("erro") });
     } finally {
       setEnviando(false);
@@ -116,6 +128,16 @@ export default function ContactForm() {
           className={entrada}
         />
       </div>
+      {/* honeypot: invisivel para gente, irresistivel para bot que preenche tudo */}
+      <input
+        type="text"
+        name="site"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
+
       <label className="flex items-start gap-2 text-sm text-slate-700">
         <input
           type="checkbox"

@@ -582,7 +582,8 @@
       "alertaAceite": "Es necesario aceptar la Política de Privacidad para enviar.",
       "sucesso": "¡Información enviada con éxito!",
       "erro": "Ocurrió un error al enviar. Inténtalo de nuevo.",
-      "enviando": "Enviando..."
+      "enviando": "Enviando...",
+      "muitasTentativas": "Enviaste varios mensajes seguidos. Prueba de nuevo en unos minutos o escríbenos por WhatsApp."
     },
     "canaisTitulo": "¿Prefieres hablar directamente?",
     "canalWhatsapp": "WhatsApp",
