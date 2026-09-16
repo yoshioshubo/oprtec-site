@@ -581,7 +581,8 @@
       "enviar": "Enviar",
       "alertaAceite": "É necessário aceitar a Política de Privacidade para enviar.",
       "sucesso": "Informações enviadas com sucesso!",
-      "erro": "Ocorreu um erro ao enviar. Tente novamente."
+      "erro": "Ocorreu um erro ao enviar. Tente novamente.",
+      "enviando": "Enviando..."
     },
     "canaisTitulo": "Prefere falar direto?",
     "canalWhatsapp": "WhatsApp",
@@ -606,5 +607,11 @@
   "whatsapp": {
     "label": "Falar no WhatsApp",
     "mensagem": "Olá! Vim pelo site da OPRtec e gostaria de saber mais."
+  },
+  "naoEncontrado": {
+    "titulo": "Página não encontrada",
+    "texto": "O endereço que você abriu não existe ou foi movido.",
+    "voltar": "Voltar para o início",
+    "contato": "Falar com a OPRtec"
   }
 }

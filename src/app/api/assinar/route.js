@@ -13,7 +13,15 @@ export async function POST(request) {
   const ip = obterIpCliente(request);
   const { permitido } = verificarLimite(ip);
 
-  const body = await request.json();
+  // Corpo malformado vinha como exceção não tratada e virava 500 (erro "nosso"),
+  // quando na verdade é requisição inválida do cliente.
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "JSON inválido." }, { status: 400 });
+  }
+
   const {
     plano: slug,
     ciclo,

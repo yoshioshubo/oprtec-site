@@ -24,6 +24,8 @@ const geistMono = Geist_Mono({
 // continuam estáticas, mas são regeneradas no máximo a cada 60s pra refletir mudanças.
 export const revalidate = 60;
 
+const OG_LOCALE = { pt: "pt_BR", en: "en_US", es: "es_ES" };
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -61,6 +63,23 @@ export async function generateMetadata({ params }) {
       ],
     },
     manifest: "/manifest.json",
+    // Sem isso, um link do site compartilhado no WhatsApp/LinkedIn aparecia como
+    // texto puro, sem título, descrição nem imagem.
+    openGraph: {
+      type: "website",
+      siteName: "OPRtec",
+      title: t("title"),
+      description: t("description"),
+      url: locale === "pt" ? "/" : `/${locale}`,
+      locale: OG_LOCALE[locale],
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "OPRtec" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
   };
 }
 

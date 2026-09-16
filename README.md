@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# oprtec-site
 
-## Getting Started
+Site institucional da OPRtec - https://www.oprtec.com.br
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack) + React 19
+- **Tailwind CSS 4**
+- **next-intl** - portugues (raiz), ingles (`/en`) e espanhol (`/es`); todo texto fica em `messages/{locale}.json`
+- **Firebase** (Firestore) - leads do formulario de contato e contatos editaveis em `/admin`
+- **Mercado Pago** (PreApproval + Card Payment Brick) - assinatura dos planos
+- Deploy: **Railway**, build automatico a cada push na `master`
+
+## Rodando local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`MERCADOPAGO_ACCESS_TOKEN` precisa estar no `.env.local` para o checkout funcionar (sem
+ele, `/api/assinar` responde 500 com "pagamento nao configurado"). As chaves do Firebase e
+a public key do Mercado Pago sao publicas por natureza e ficam no codigo.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/app/[locale]/       paginas (home, produtos, planos, cases, sobre, contato,
+                        avaliacao, checkout, termos, privacidade, admin)
+src/app/api/assinar/    cria a assinatura no Mercado Pago (rate limit por IP)
+src/app/robots.js       robots.txt
+src/app/sitemap.js      sitemap.xml com hreflang dos 3 idiomas
+src/components/         Header, Footer, CookieBanner, WhatsAppButton, ...
+src/lib/                contato (padroes + normalizacao), siteConfig (Firestore), rateLimit
+src/data/               planos e ordem dos produtos (textos ficam em messages/)
+messages/               pt.json, en.json, es.json - mesmas chaves nos tres
+firestore.rules         regras do Firestore (publicar pelo console do Firebase)
+```
 
-## Learn More
+## Convencoes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Todo texto visivel vai para `messages/` nos tres idiomas - nada fixo na pagina.
+- Links internos usam `Link` de `@/i18n/navigation` (resolve o prefixo de idioma sozinho).
+- As regras do Firestore sao a barreira real de permissao; validacao no cliente e so UX.
+- `/admin` e `/checkout` ficam fora do sitemap e bloqueados no robots.txt.

@@ -32,7 +32,7 @@ export default function LanguageSwitcher({ className = "" }) {
               { locale: idioma.code }
             )
           }
-          aria-current={locale === idioma.code}
+          aria-current={locale === idioma.code ? "true" : undefined}
           className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors ${
             locale === idioma.code
               ? "bg-cyan-600 text-white"

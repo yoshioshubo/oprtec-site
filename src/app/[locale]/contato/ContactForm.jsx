@@ -6,37 +6,52 @@ import { db } from "@/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Link } from "@/i18n/navigation";
 
+// Limites um pouco abaixo dos das regras do Firestore (200/200/30/2000). Sem isso, um
+// texto mais longo era recusado pela regra e o visitante so via "erro ao enviar".
+const LIMITES = { nome: 190, estabelecimento: 190, whatsapp: 25, desafio: 1900 };
+
+const entrada =
+  "mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500";
+
 export default function ContactForm() {
   const t = useTranslations("contato.form");
   const [aceitouPrivacidade, setAceitouPrivacidade] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const [status, setStatus] = useState({ tipo: "", texto: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!aceitouPrivacidade) {
-      alert(t("alertaAceite"));
+      setStatus({ tipo: "erro", texto: t("alertaAceite") });
       return;
     }
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    const dados = new FormData(form);
+    const texto = (campo) => String(dados.get(campo) || "").trim();
+
+    setEnviando(true);
+    setStatus({ tipo: "", texto: "" });
 
     try {
       await addDoc(collection(db, "leads"), {
-        nome: formData.get("nome"),
-        estabelecimento: formData.get("estabelecimento"),
-        whatsapp: formData.get("whatsapp"),
-        desafio: formData.get("desafio"),
+        nome: texto("nome"),
+        estabelecimento: texto("estabelecimento"),
+        whatsapp: texto("whatsapp"),
+        desafio: texto("desafio"),
         status: "novo",
         criadoEm: serverTimestamp(),
       });
 
-      alert(t("sucesso"));
       form.reset();
       setAceitouPrivacidade(false);
+      setStatus({ tipo: "ok", texto: t("sucesso") });
     } catch (error) {
       console.error("Erro ao salvar no Firebase:", error);
-      alert(t("erro"));
+      setStatus({ tipo: "erro", texto: t("erro") });
+    } finally {
+      setEnviando(false);
     }
   };
 
@@ -53,7 +68,9 @@ export default function ContactForm() {
           id="nome"
           name="nome"
           type="text"
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+          required
+          maxLength={LIMITES.nome}
+          className={entrada}
         />
       </div>
       <div>
@@ -67,7 +84,9 @@ export default function ContactForm() {
           id="estabelecimento"
           name="estabelecimento"
           type="text"
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+          required
+          maxLength={LIMITES.estabelecimento}
+          className={entrada}
         />
       </div>
       <div>
@@ -78,18 +97,23 @@ export default function ContactForm() {
           id="whatsapp"
           name="whatsapp"
           type="tel"
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+          required
+          maxLength={LIMITES.whatsapp}
+          className={entrada}
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-slate-700" htmlFor="mensagem">
+        {/* o htmlFor apontava para "mensagem", id que nao existe: clicar no rotulo nao focava o campo */}
+        <label className="block text-sm font-medium text-slate-700" htmlFor="desafio">
           {t("desafio")}
         </label>
         <textarea
           id="desafio"
           name="desafio"
           rows={4}
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+          required
+          maxLength={LIMITES.desafio}
+          className={entrada}
         />
       </div>
       <label className="flex items-start gap-2 text-sm text-slate-700">
@@ -115,12 +139,25 @@ export default function ContactForm() {
         </span>
       </label>
 
+      {status.texto && (
+        <p
+          role={status.tipo === "erro" ? "alert" : "status"}
+          className={`rounded-lg px-4 py-3 text-sm ${
+            status.tipo === "ok"
+              ? "bg-emerald-50 text-emerald-800 ring-1 ring-emerald-200"
+              : "bg-red-50 text-red-800 ring-1 ring-red-200"
+          }`}
+        >
+          {status.texto}
+        </p>
+      )}
+
       <button
         type="submit"
-        disabled={!aceitouPrivacidade}
+        disabled={!aceitouPrivacidade || enviando}
         className="w-full rounded-full bg-cyan-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:bg-slate-300"
       >
-        {t("enviar")}
+        {enviando ? t("enviando") : t("enviar")}
       </button>
     </form>
   );

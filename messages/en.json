@@ -581,7 +581,8 @@
       "enviar": "Send",
       "alertaAceite": "You need to accept the Privacy Policy to submit.",
       "sucesso": "Information sent successfully!",
-      "erro": "Something went wrong. Please try again."
+      "erro": "Something went wrong. Please try again.",
+      "enviando": "Sending..."
     },
     "canaisTitulo": "Prefer to reach us directly?",
     "canalWhatsapp": "WhatsApp",
@@ -606,5 +607,11 @@
   "whatsapp": {
     "label": "Chat on WhatsApp",
     "mensagem": "Hi! I found OPRtec's website and would like to know more."
+  },
+  "naoEncontrado": {
+    "titulo": "Page not found",
+    "texto": "The address you opened does not exist or has been moved.",
+    "voltar": "Back to home",
+    "contato": "Talk to OPRtec"
   }
 }
