@@ -4,10 +4,10 @@
 export const TALLY_FORM_ID = "yPbQ0g";
 
 export const CONTATOS_PADRAO = {
-  whatsappNumero: "5532991852108",
+  whatsappNumero: "5532991730821",
   whatsappMensagem: {},
   email: "oprconsultorias@gmail.com",
-  telefone: "(32) 99185-2108",
+  telefone: "(32) 99173-0821",
 };
 
 // Só estes e-mails entram no /admin. A barreira de verdade é a regra do Firestore
