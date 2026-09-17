@@ -603,7 +603,9 @@
     "formNota": "The form is currently in Portuguese.",
     "whatsappTexto": "Prefer to talk directly?",
     "whatsappBotao": "Chat on WhatsApp",
-    "abrirNovaAba": "Didn't load? Open the form in a new tab"
+    "abrirNovaAba": "Didn't load? Open the form in a new tab",
+    "aceito": "I have read and accept the <link>Privacy Policy</link> and authorize OPRtec to use the information provided in this assessment to contact me.",
+    "avisoAceite": "Tick the box above to open the assessment form."
   },
   "whatsapp": {
     "label": "Chat on WhatsApp",

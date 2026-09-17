@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { linkWhatsApp, TALLY_FORM_ID } from "@/lib/contato";
+import { linkWhatsApp } from "@/lib/contato";
 import { obterContatos } from "@/lib/siteConfig";
 import TallyEmbed from "./TallyEmbed";
 
@@ -33,16 +33,6 @@ export default async function AvaliacaoPage({ params }) {
 
       <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
         <TallyEmbed title={t("titulo")} />
-        <p className="mt-4 text-center text-xs text-slate-400">
-          <a
-            href={`https://tally.so/r/${TALLY_FORM_ID}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-slate-600"
-          >
-            {t("abrirNovaAba")}
-          </a>
-        </p>
       </div>
 
       <div className="mt-10 flex flex-col items-center gap-3 text-center">
