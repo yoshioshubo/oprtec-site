@@ -61,7 +61,7 @@
     "s2Titulo": "2. What data we collect",
     "s2Texto": "We collect only what's strictly necessary to handle your contact request or process your subscription:",
     "s2Item1Label": "Contact form:",
-    "s2Item1Texto": "name, business name, WhatsApp number, and the message you write.",
+    "s2Item1Texto": "name, business name, e-mail, WhatsApp number, and the message you write.",
     "s2Item2Label": "Checkout / subscription:",
     "s2Item2Texto": "name, tax ID, email, and credit card details — the latter are entered directly on Mercado Pago's secure screen and never reach our servers; we only receive a billing authorization token.",
     "s3Titulo": "3. What we use your data for",

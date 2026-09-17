@@ -61,7 +61,7 @@
     "s2Titulo": "2. Qué datos recopilamos",
     "s2Texto": "Recopilamos solo lo estrictamente necesario para atender tu solicitud de contacto o procesar tu suscripción:",
     "s2Item1Label": "Formulario de contacto:",
-    "s2Item1Texto": "nombre, nombre del establecimiento, WhatsApp y el mensaje que escribas.",
+    "s2Item1Texto": "nombre, nombre del establecimiento, correo electrónico, WhatsApp y el mensaje que escribas.",
     "s2Item2Label": "Checkout / suscripción:",
     "s2Item2Texto": "nombre, identificación fiscal, correo electrónico y los datos de la tarjeta de crédito — estos últimos se ingresan directamente en la pantalla segura de Mercado Pago y nunca llegan a nuestros servidores; solo recibimos un token de autorización de cobro.",
     "s3Titulo": "3. Para qué usamos tus datos",

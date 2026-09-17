@@ -61,7 +61,7 @@
     "s2Titulo": "2. Quais dados coletamos",
     "s2Texto": "Coletamos apenas o estritamente necessário para atender ao seu pedido de contato ou processar sua assinatura:",
     "s2Item1Label": "Formulário de contato:",
-    "s2Item1Texto": "nome, nome do estabelecimento, WhatsApp e a mensagem que você escrever.",
+    "s2Item1Texto": "nome, nome do estabelecimento, e-mail, WhatsApp e a mensagem que você escrever.",
     "s2Item2Label": "Checkout / assinatura:",
     "s2Item2Texto": "nome, CPF ou CNPJ, e-mail e os dados do cartão de crédito — estes últimos são inseridos diretamente na tela segura do Mercado Pago e nunca chegam aos nossos servidores; recebemos apenas um token de autorização de cobrança.",
     "s3Titulo": "3. Para que usamos seus dados",
