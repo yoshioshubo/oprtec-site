@@ -23,7 +23,6 @@ export default function Header() {
     { href: "/produtos", label: t("produtos") },
     { href: "/sobre", label: t("sobre") },
     { href: "/cases", label: t("cases") },
-    { href: "/contato", label: t("contato") },
   ];
 
   return (
