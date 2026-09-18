@@ -603,9 +603,7 @@
     "formNota": "Por ahora, el formulario está en portugués.",
     "whatsappTexto": "¿Prefieres hablar directamente?",
     "whatsappBotao": "Hablar por WhatsApp",
-    "abrirNovaAba": "¿No cargó? Abrir el formulario en una nueva pestaña",
-    "aceito": "Leí y acepto la <link>Política de Privacidad</link> y autorizo a OPRtec a usar los datos informados en este diagnóstico para contactarme.",
-    "avisoAceite": "Marca la casilla de arriba para abrir el formulario del diagnóstico."
+    "abrirNovaAba": "¿No cargó? Abrir el formulario en una nueva pestaña"
   },
   "whatsapp": {
     "label": "Hablar por WhatsApp",

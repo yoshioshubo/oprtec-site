@@ -603,9 +603,7 @@
     "formNota": "",
     "whatsappTexto": "Prefere conversar direto?",
     "whatsappBotao": "Chamar no WhatsApp",
-    "abrirNovaAba": "Não carregou? Abrir o formulário em nova aba",
-    "aceito": "Li e aceito a <link>Política de Privacidade</link> e autorizo a OPRtec a usar os dados informados neste diagnóstico para entrar em contato comigo.",
-    "avisoAceite": "Marque a caixa acima para abrir o formulário do diagnóstico."
+    "abrirNovaAba": "Não carregou? Abrir o formulário em nova aba"
   },
   "whatsapp": {
     "label": "Falar no WhatsApp",
