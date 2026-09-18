@@ -32,8 +32,8 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="OPRtec"
-            width={1224}
-            height={520}
+            width={1198}
+            height={492}
             className="h-[45.6px] w-auto"
             priority
           />
