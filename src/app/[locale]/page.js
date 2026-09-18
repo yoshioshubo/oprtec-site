@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import ContadorAnimado from "@/components/ContadorAnimado";
 import HeroGallery from "@/components/HeroGallery";
 import { Link } from "@/i18n/navigation";
 
@@ -66,7 +67,7 @@ export default async function Home({ params }) {
             {resultados.map((r) => (
               <div key={r.valor} className="px-1 text-center sm:px-4">
                 <p className="whitespace-nowrap text-xl font-bold tracking-tight text-white sm:text-4xl lg:text-[1.75rem] xl:text-4xl">
-                  {r.valor}
+                  <ContadorAnimado valor={r.valor} />
                 </p>
                 <p className="mt-2 text-sm text-slate-300 sm:text-base">{r.descricao}</p>
               </div>
