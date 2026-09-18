@@ -15,6 +15,8 @@ const API = "https://firebaserules.googleapis.com/v1";
 const cliente = await new GoogleAuth({
   scopes: ["https://www.googleapis.com/auth/cloud-platform"],
 }).getClient();
+// O e-mail da conta de serviço não é segredo e ajuda a conferir no IAM qual conta precisa de permissão.
+console.log(`Conta de serviço: ${cliente.email ?? "(desconhecida)"}`);
 
 async function obter(url) {
   try {
