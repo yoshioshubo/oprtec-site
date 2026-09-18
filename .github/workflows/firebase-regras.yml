@@ -1,0 +1,109 @@
+# Publica as regras do Firestore (projeto oprtec-agendamento) a partir do repositório.
+#
+# Por que existe: até 18/09/2026 firestore.rules era publicado à mão no Console, e o arquivo
+# versionado ficou dias sem valer em produção. Agora o repositório é a fonte da verdade.
+#
+# Quando roda:
+#   - push em master que muda firestore.rules → compara com o publicado e publica;
+#   - pull request que muda firestore.rules → só valida (dry-run), não publica;
+#   - manual (Actions → Run workflow) → só compara, a não ser que marque "publicar".
+# Toda execução imprime a diferença entre o que está publicado e o que está no repositório:
+# publicar SUBSTITUI todas as regras do projeto, então regra que só existe no Console some.
+#
+# Só regras, de propósito (mesmo motivo do opr-tec-gerencial): deploy de índices pode propor
+# remover índices criados pelo Console e derrubar consultas em produção.
+#
+# Pré-requisito: secret FIREBASE_SERVICE_ACCOUNT com o JSON de uma conta de serviço do
+# projeto oprtec-agendamento com permissão de publicar regras (Firebase Rules Admin).
+name: Publicar regras do Firebase
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - firestore.rules
+  pull_request:
+    paths:
+      - firestore.rules
+  workflow_dispatch:
+    inputs:
+      publicar:
+        description: "Publicar de verdade (desmarcado = só comparar)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: firebase-regras
+  cancel-in-progress: false
+
+env:
+  PROJETO: oprtec-agendamento
+
+jobs:
+  regras:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Fora do projeto, para não instalar as dependências do Next à toa.
+      - name: Instalar ferramentas
+        run: npm install --prefix "$RUNNER_TEMP/ferramentas" --no-audit --no-fund firebase-tools@13 google-auth-library@9
+
+      - name: Preparar credencial
+        env:
+          CREDENCIAL: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -z "$CREDENCIAL" ]; then
+            echo "::error::Secret FIREBASE_SERVICE_ACCOUNT não configurado."
+            exit 1
+          fi
+          printf '%s' "$CREDENCIAL" > "$RUNNER_TEMP/credencial.json"
+
+      - name: Comparar com o que está publicado
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/credencial.json
+          FERRAMENTAS: ${{ runner.temp }}/ferramentas
+        run: |
+          node .github/scripts/regras-publicadas.mjs "$PROJETO" "$RUNNER_TEMP/publicadas.rules"
+          echo "---- diferença (- publicado / + repositório) ----"
+          if diff -u "$RUNNER_TEMP/publicadas.rules" firestore.rules; then
+            echo "Nenhuma diferença: o repositório já é o que está publicado."
+          fi
+
+      # Saída filtrada: em erro HTTP o firebase-tools imprime o token de acesso da conta de
+      # serviço. O GitHub só censura o secret, não o token derivado dele.
+      - name: Validar (sem publicar)
+        if: github.event_name == 'pull_request'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/credencial.json
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/ferramentas/node_modules/.bin/firebase" deploy --only firestore:rules --project "$PROJETO" --dry-run --non-interactive 2>&1 \
+            | sed -u -E 's/(Token:[[:space:]]*)[A-Za-z0-9._~+\/=-]+/\1[REDIGIDO]/g; s/ya29\.[A-Za-z0-9._~+\/=-]+/[REDIGIDO]/g; s/(Bearer[[:space:]]+)[A-Za-z0-9._~+\/=-]+/\1[REDIGIDO]/g'
+
+      - name: Publicar regras
+        if: github.event_name == 'push' || inputs.publicar == true
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/credencial.json
+        run: |
+          set -o pipefail
+          "$RUNNER_TEMP/ferramentas/node_modules/.bin/firebase" deploy --only firestore:rules --project "$PROJETO" --non-interactive 2>&1 \
+            | sed -u -E 's/(Token:[[:space:]]*)[A-Za-z0-9._~+\/=-]+/\1[REDIGIDO]/g; s/ya29\.[A-Za-z0-9._~+\/=-]+/[REDIGIDO]/g; s/(Bearer[[:space:]]+)[A-Za-z0-9._~+\/=-]+/\1[REDIGIDO]/g'
+
+      - name: Conferir publicação
+        if: github.event_name == 'push' || inputs.publicar == true
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/credencial.json
+          FERRAMENTAS: ${{ runner.temp }}/ferramentas
+        run: |
+          node .github/scripts/regras-publicadas.mjs "$PROJETO" "$RUNNER_TEMP/depois.rules"
+          diff -u "$RUNNER_TEMP/depois.rules" firestore.rules
+          echo "Publicado e idêntico ao repositório."
+
+      - name: Apagar credencial
+        if: always()
+        run: rm -f "$RUNNER_TEMP/credencial.json"
