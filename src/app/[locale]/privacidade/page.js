@@ -39,6 +39,9 @@ export default async function PrivacidadePage({ params }) {
             <li>
               <strong>{t("s2Item2Label")}</strong> {t("s2Item2Texto")}
             </li>
+            <li>
+              <strong>{t("s2Item3Label")}</strong> {t("s2Item3Texto")}
+            </li>
           </ul>
         </section>
 
