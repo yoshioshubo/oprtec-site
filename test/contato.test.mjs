@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  formatarTelefone,
   formatarWhatsApp,
   linkWhatsApp,
   normalizarWhatsApp,
@@ -39,4 +40,12 @@ test("linkWhatsApp escapa a mensagem", () => {
     linkWhatsApp("5532991852108", "Ola! Vim pelo site & quero saber mais"),
     "https://wa.me/5532991852108?text=Ola!%20Vim%20pelo%20site%20%26%20quero%20saber%20mais"
   );
+});
+
+test("formatarTelefone padroniza o telefone digitado no admin", () => {
+  assert.equal(formatarTelefone("(32) 991730821"), "(32) 99173-0821");
+  assert.equal(formatarTelefone("32991730821"), "(32) 99173-0821");
+  assert.equal(formatarTelefone("(32) 3215-2108"), "(32) 3215-2108");
+  assert.equal(formatarTelefone("(55) 991730821"), "(55) 99173-0821", "DDD 55 nao pode ser confundido com o codigo do pais");
+  assert.equal(formatarTelefone("ramal 12"), "ramal 12", "sem formato conhecido, mostra como digitado");
 });

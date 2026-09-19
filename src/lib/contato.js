@@ -37,3 +37,10 @@ export function formatarWhatsApp(numero) {
   if (d.length === 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
   return numero;
 }
+
+// Telefone digitado livremente no /admin ("32991730821", "(32) 991730821"...) exibido sempre
+// no formato "(32) 99173-0821". Se não parecer um número brasileiro, mostra como foi digitado.
+export function formatarTelefone(entrada) {
+  const numero = normalizarWhatsApp(entrada);
+  return numero ? formatarWhatsApp(numero) : String(entrada || "").trim();
+}

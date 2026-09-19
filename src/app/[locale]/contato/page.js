@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import ContactForm from "./ContactForm";
-import { formatarWhatsApp, linkWhatsApp } from "@/lib/contato";
+import { formatarTelefone, formatarWhatsApp, linkWhatsApp } from "@/lib/contato";
 import { obterContatos } from "@/lib/siteConfig";
 
 export async function generateMetadata({ params }) {
@@ -46,7 +46,7 @@ export default async function ContatoPage({ params }) {
             <li>
               <span className="text-slate-400">{t("canalTelefone")}: </span>
               <a href={`tel:+55${contatos.telefone.replace(/\D/g, "")}`} className="font-medium text-slate-700">
-                {contatos.telefone}
+                {formatarTelefone(contatos.telefone)}
               </a>
             </li>
           )}
