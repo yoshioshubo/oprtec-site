@@ -7,7 +7,11 @@ import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "planos" });
-  return { title: t("metaTitle"), ...(VENDAS_ONLINE_ATIVAS ? {} : { robots: { index: false, follow: true } }) };
+  if (!VENDAS_ONLINE_ATIVAS) {
+    const tv = await getTranslations({ locale, namespace: "vendasPausadas" });
+    return { title: `${tv("titulo")} — OPRtec`, robots: { index: false, follow: true } };
+  }
+  return { title: t("metaTitle") };
 }
 
 export default async function PlanosPage({ params }) {
