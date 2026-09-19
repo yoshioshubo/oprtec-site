@@ -23,8 +23,8 @@ const CARD_STYLES = [
 
 const slides = [
   {
-    src: "/hero-dashboard.jpg",
-    alt: "Gestão de bar e restaurante com painéis de dados e IA",
+    src: "/hero-restaurante.jpg",
+    alt: "Dono de restaurante acompanhando os indicadores da operação num tablet, com o salão cheio",
   },
   {
     src: "/hero-sapore.jpg",
