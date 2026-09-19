@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({ params }) {
@@ -39,11 +40,14 @@ export default async function TermosPage({ params }) {
                   {chunks}
                 </Link>
               ),
-              linkPlanos: (chunks) => (
-                <Link href="/planos" className="text-cyan-600 hover:text-cyan-700">
-                  {chunks}
-                </Link>
-              ),
+              linkPlanos: (chunks) =>
+                VENDAS_ONLINE_ATIVAS ? (
+                  <Link href="/planos" className="text-cyan-600 hover:text-cyan-700">
+                    {chunks}
+                  </Link>
+                ) : (
+                  chunks
+                ),
             })}
           </p>
         </section>

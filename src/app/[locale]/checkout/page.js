@@ -7,11 +7,13 @@ import {
   economiaAnual,
 } from "@/data/planos";
 import CardCheckoutForm from "./CardCheckoutForm";
+import VendasPausadas from "@/components/VendasPausadas";
+import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "checkout" });
-  return { title: t("metaTitle") };
+  return { title: t("metaTitle"), ...(VENDAS_ONLINE_ATIVAS ? {} : { robots: { index: false, follow: true } }) };
 }
 
 const TRIAL_DAYS = 10;
@@ -19,6 +21,7 @@ const TRIAL_DAYS = 10;
 export default async function CheckoutPage({ params, searchParams }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  if (!VENDAS_ONLINE_ATIVAS) return <VendasPausadas locale={locale} />;
   const t = await getTranslations("checkout");
 
   const { plano: slug, ciclo: cicloParam } = await searchParams;

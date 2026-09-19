@@ -1,16 +1,19 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { planos } from "@/data/planos";
 import PlanosClient from "./PlanosClient";
+import VendasPausadas from "@/components/VendasPausadas";
+import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "planos" });
-  return { title: t("metaTitle") };
+  return { title: t("metaTitle"), ...(VENDAS_ONLINE_ATIVAS ? {} : { robots: { index: false, follow: true } }) };
 }
 
 export default async function PlanosPage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  if (!VENDAS_ONLINE_ATIVAS) return <VendasPausadas locale={locale} />;
   const t = await getTranslations("planos");
 
   return (

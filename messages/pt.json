@@ -616,5 +616,12 @@
     "texto": "O endereço que você abriu não existe ou foi movido.",
     "voltar": "Voltar para o início",
     "contato": "Falar com a OPRtec"
+  },
+  "vendasPausadas": {
+    "badge": "Consultoria OPRtec",
+    "titulo": "Fale com um consultor",
+    "texto": "As ferramentas OPRtec são implantadas junto com a nossa consultoria, de acordo com a realidade do seu negócio. Converse com um consultor para montar a solução certa para você.",
+    "whatsapp": "Falar com um consultor",
+    "avaliacao": "Fazer o diagnóstico gratuito"
   }
 }

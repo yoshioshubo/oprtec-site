@@ -616,5 +616,12 @@
     "texto": "The address you opened does not exist or has been moved.",
     "voltar": "Back to home",
     "contato": "Talk to OPRtec"
+  },
+  "vendasPausadas": {
+    "badge": "OPRtec Consulting",
+    "titulo": "Talk to a consultant",
+    "texto": "OPRtec tools are implemented together with our consulting, tailored to how your business works. Talk to a consultant to put together the right solution for you.",
+    "whatsapp": "Talk to a consultant",
+    "avaliacao": "Take the free assessment"
   }
 }

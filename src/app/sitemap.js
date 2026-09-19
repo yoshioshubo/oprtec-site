@@ -1,4 +1,5 @@
 import { routing } from "@/i18n/routing";
+import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 
 const SITE_URL = "https://www.oprtec.com.br";
 
@@ -6,7 +7,7 @@ const SITE_URL = "https://www.oprtec.com.br";
 const ROTAS = [
   { caminho: "", prioridade: 1 },
   { caminho: "/produtos", prioridade: 0.9 },
-  { caminho: "/planos", prioridade: 0.9 },
+  ...(VENDAS_ONLINE_ATIVAS ? [{ caminho: "/planos", prioridade: 0.9 }] : []),
   { caminho: "/avaliacao", prioridade: 0.9 },
   { caminho: "/cases", prioridade: 0.8 },
   { caminho: "/sobre", prioridade: 0.7 },

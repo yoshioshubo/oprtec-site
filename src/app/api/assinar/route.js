@@ -5,6 +5,7 @@ import { planos, precoTotalAnual } from "@/data/planos";
 import { obterIpCliente, verificarLimite } from "@/lib/rateLimit";
 import { routing } from "@/i18n/routing";
 import { criarDocumento } from "@/lib/firestoreRest";
+import { VENDAS_ONLINE_ATIVAS } from "@/lib/vendas";
 
 const SITE_URL = "https://www.oprtec.com.br";
 const TRIAL_DAYS = 10;
@@ -14,6 +15,11 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const VERSAO_DOCUMENTOS = "2026-09-19";
 
 export async function POST(request) {
+  // Venda online pausada: nenhuma assinatura é criada, nem por chamada direta à API.
+  if (!VENDAS_ONLINE_ATIVAS) {
+    return NextResponse.json({ error: "Vendas online pausadas." }, { status: 403 });
+  }
+
   const ip = obterIpCliente(request);
   const { permitido } = verificarLimite(ip);
 
