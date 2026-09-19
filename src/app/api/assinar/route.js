@@ -11,7 +11,7 @@ const TRIAL_DAYS = 10;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Data da ultima revisao dos Termos e da Politica de Privacidade (ver messages/*.json).
 // Guardada junto do consentimento para saber qual texto a pessoa aceitou.
-const VERSAO_DOCUMENTOS = "2026-09-18";
+const VERSAO_DOCUMENTOS = "2026-09-19";
 
 export async function POST(request) {
   const ip = obterIpCliente(request);
