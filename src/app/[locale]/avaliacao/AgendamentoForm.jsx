@@ -213,8 +213,8 @@ export default function AgendamentoForm() {
               >
                 ‹
               </button>
-              <p className="text-sm font-semibold capitalize text-slate-900" aria-live="polite">
-                {formatos.mes.format(meioDia(`${mesAtual}-01`))}
+              <p className="text-sm font-semibold text-slate-900" aria-live="polite">
+                {maiuscula(formatos.mes.format(meioDia(`${mesAtual}-01`)))}
               </p>
               <button
                 type="button"
