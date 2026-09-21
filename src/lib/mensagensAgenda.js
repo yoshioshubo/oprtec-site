@@ -35,13 +35,16 @@ const semMarcacao = (texto) => String(texto ?? "").replace(/[*_~`]/g, "").trim()
 const TEXTOS = {
   pt: {
     fuso: "horário de Brasília",
-    confirmacao: ({ nome, quando, meet }) =>
+    confirmacao: ({ nome, quando, meet, atendimento }) =>
       `Olá, ${nome}! Sua *avaliação gratuita com a OPRtec* está confirmada para *${quando}* (horário de Brasília).\n\n` +
       (meet ? `Link da videoconferência (Google Meet):\n${meet}\n\n` : "") +
-      "Se precisar remarcar, é só responder esta mensagem.",
-    cancelamento: ({ nome, quando }) =>
+      "_Esta é uma mensagem automática._" +
+      (atendimento ? ` Para remarcar ou tirar dúvidas, fale com a gente: ${atendimento}` : ""),
+    cancelamento: ({ nome, quando, atendimento }) =>
       `Olá, ${nome}. A sua avaliação gratuita com a OPRtec marcada para *${quando}* (horário de Brasília) foi cancelada.\n\n` +
-      "Para escolher outro horário: https://www.oprtec.com.br/avaliacao\nSe preferir, responda esta mensagem.",
+      "Para escolher outro horário: https://www.oprtec.com.br/avaliacao\n\n" +
+      "_Esta é uma mensagem automática._" +
+      (atendimento ? ` Dúvidas? Fale com a gente: ${atendimento}` : ""),
     assunto: "Avaliação gratuita confirmada — OPRtec",
     assuntoCancelamento: "Avaliação gratuita cancelada — OPRtec",
     ola: "Olá",
@@ -57,13 +60,16 @@ const TEXTOS = {
   },
   en: {
     fuso: "Brasília time",
-    confirmacao: ({ nome, quando, meet }) =>
+    confirmacao: ({ nome, quando, meet, atendimento }) =>
       `Hi, ${nome}! Your *free assessment with OPRtec* is confirmed for *${quando}* (Brasília time).\n\n` +
       (meet ? `Video call link (Google Meet):\n${meet}\n\n` : "") +
-      "If you need to reschedule, just reply to this message.",
-    cancelamento: ({ nome, quando }) =>
+      "_This is an automated message._" +
+      (atendimento ? ` To reschedule or ask a question, reach us here: ${atendimento}` : ""),
+    cancelamento: ({ nome, quando, atendimento }) =>
       `Hi, ${nome}. Your free assessment with OPRtec scheduled for *${quando}* (Brasília time) has been cancelled.\n\n` +
-      "To pick another time: https://www.oprtec.com.br/en/avaliacao\nOr just reply to this message.",
+      "To pick another time: https://www.oprtec.com.br/en/avaliacao\n\n" +
+      "_This is an automated message._" +
+      (atendimento ? ` Questions? Reach us here: ${atendimento}` : ""),
     assunto: "Free assessment confirmed — OPRtec",
     assuntoCancelamento: "Free assessment cancelled — OPRtec",
     ola: "Hi",
@@ -79,13 +85,16 @@ const TEXTOS = {
   },
   es: {
     fuso: "hora de Brasilia",
-    confirmacao: ({ nome, quando, meet }) =>
+    confirmacao: ({ nome, quando, meet, atendimento }) =>
       `¡Hola, ${nome}! Tu *evaluación gratuita con OPRtec* está confirmada para el *${quando}* (hora de Brasilia).\n\n` +
       (meet ? `Enlace de la videoconferencia (Google Meet):\n${meet}\n\n` : "") +
-      "Si necesitas reagendar, solo responde este mensaje.",
-    cancelamento: ({ nome, quando }) =>
+      "_Este es un mensaje automático._" +
+      (atendimento ? ` Para reagendar o resolver dudas, escríbenos aquí: ${atendimento}` : ""),
+    cancelamento: ({ nome, quando, atendimento }) =>
       `Hola, ${nome}. Tu evaluación gratuita con OPRtec agendada para el *${quando}* (hora de Brasilia) fue cancelada.\n\n` +
-      "Para elegir otro horario: https://www.oprtec.com.br/es/avaliacao\nSi prefieres, responde este mensaje.",
+      "Para elegir otro horario: https://www.oprtec.com.br/es/avaliacao\n\n" +
+      "_Este es un mensaje automático._" +
+      (atendimento ? ` ¿Dudas? Escríbenos aquí: ${atendimento}` : ""),
     assunto: "Evaluación gratuita confirmada — OPRtec",
     assuntoCancelamento: "Evaluación gratuita cancelada — OPRtec",
     ola: "Hola",
@@ -101,14 +110,32 @@ const TEXTOS = {
   },
 };
 
-export function whatsappConfirmacao({ nome, inicio, meet, idioma }) {
+// As mensagens saem pelo número do bot do gerencial, que não conversa com cliente: número
+// desconhecido é ignorado e operador cadastrado recebe o menu do sistema. Por isso nunca
+// pedimos "responda esta mensagem" — o texto avisa que é automático e aponta o WhatsApp de
+// atendimento da OPRtec (o cadastrado no /admin do site).
+const linkAtendimento = (numero) => {
+  const digitos = String(numero || "").replace(/\D/g, "");
+  return digitos ? `https://wa.me/${digitos}` : "";
+};
+
+export function whatsappConfirmacao({ nome, inicio, meet, idioma, whatsappOprtec }) {
   const i = idiomaValido(idioma);
-  return TEXTOS[i].confirmacao({ nome: semMarcacao(nome), quando: formatarDataHora(inicio, i), meet });
+  return TEXTOS[i].confirmacao({
+    nome: semMarcacao(nome),
+    quando: formatarDataHora(inicio, i),
+    meet,
+    atendimento: linkAtendimento(whatsappOprtec),
+  });
 }
 
-export function whatsappCancelamento({ nome, inicio, idioma }) {
+export function whatsappCancelamento({ nome, inicio, idioma, whatsappOprtec }) {
   const i = idiomaValido(idioma);
-  return TEXTOS[i].cancelamento({ nome: semMarcacao(nome), quando: formatarDataHora(inicio, i) });
+  return TEXTOS[i].cancelamento({
+    nome: semMarcacao(nome),
+    quando: formatarDataHora(inicio, i),
+    atendimento: linkAtendimento(whatsappOprtec),
+  });
 }
 
 // Aviso interno para a OPRtec, sempre em português.

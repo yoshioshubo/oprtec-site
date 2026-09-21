@@ -26,6 +26,19 @@ test("WhatsApp de confirmação traz data, Meet e tira marcação do nome", () =
   assert.doesNotMatch(whatsappConfirmacao({ nome: "Ana", inicio: INICIO, meet: null, idioma: "en" }), /Google Meet\)/);
 });
 
+test("WhatsApp nunca pede para responder ao bot e aponta o atendimento humano", () => {
+  for (const idioma of ["pt", "en", "es"]) {
+    const confirmacao = whatsappConfirmacao({ nome: "Ana", inicio: INICIO, meet: null, idioma, whatsappOprtec: "5532991730821" });
+    const cancelamento = whatsappCancelamento({ nome: "Ana", inicio: INICIO, idioma, whatsappOprtec: "5532991730821" });
+    for (const texto of [confirmacao, cancelamento]) {
+      assert.doesNotMatch(texto, /responda|reply|responde/i);
+      assert.match(texto, /https:\/\/wa\.me\/5532991730821/);
+    }
+  }
+  // Sem número de atendimento a mensagem continua válida, só sem o link.
+  assert.doesNotMatch(whatsappConfirmacao({ nome: "Ana", inicio: INICIO, meet: null, idioma: "pt" }), /wa\.me/);
+});
+
 test("aviso interno e cancelamento", () => {
   const aviso = whatsappAvisoOprtec({
     empresa: "Bar X",
