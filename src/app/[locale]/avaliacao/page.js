@@ -1,7 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { linkWhatsApp } from "@/lib/contato";
 import { obterContatos } from "@/lib/siteConfig";
+import { agendaConfigurada } from "@/lib/googleAgenda";
 import TallyEmbed from "./TallyEmbed";
+import AgendamentoForm from "./AgendamentoForm";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -9,12 +11,13 @@ export async function generateMetadata({ params }) {
   return { title: t("metaTitle") };
 }
 
-// O diagnóstico continua sendo o formulário do Tally, mas embutido aqui dentro —
-// o visitante não sai do domínio da OPRtec nem cai numa aba nova.
+// Com o Google Agenda configurado no Railway, o visitante agenda direto a videoconferência
+// da avaliação (AgendamentoForm). Sem as credenciais, continua o formulário do Tally embutido.
 export default async function AvaliacaoPage({ params }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("avaliacao");
+  const usarAgenda = agendaConfigurada();
+  const t = await getTranslations(usarAgenda ? "agendamento" : "avaliacao");
   const tw = await getTranslations("whatsapp");
   const contatos = await obterContatos();
 
@@ -27,12 +30,12 @@ export default async function AvaliacaoPage({ params }) {
         {t("titulo")}
       </h1>
       <p className="mt-4 text-lg text-slate-600">{t("subtitulo")}</p>
-      {t("formNota") && (
+      {!usarAgenda && t("formNota") && (
         <p className="mt-2 text-sm text-slate-500">{t("formNota")}</p>
       )}
 
       <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8">
-        <TallyEmbed title={t("titulo")} />
+        {usarAgenda ? <AgendamentoForm /> : <TallyEmbed title={t("titulo")} />}
       </div>
 
       <div className="mt-10 flex flex-col items-center gap-3 text-center">

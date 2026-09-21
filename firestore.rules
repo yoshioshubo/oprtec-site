@@ -34,6 +34,29 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // Agendamento da avaliação gratuita (videoconferência), gravado pela rota
+    // /api/agenda/agendar antes de criar o evento no Google Agenda. É também a prova do
+    // consentimento da LGPD (aceitouPrivacidade + versaoPolitica + criadoEm).
+    match /agendamentos/{agendamentoId} {
+      allow create: if request.resource.data.keys().hasAll(['empresa','nome','whatsapp','email','inicio','idioma','aceitouPrivacidade','versaoPolitica','origem','criadoEm'])
+        && request.resource.data.keys().hasOnly(['empresa','nome','whatsapp','email','inicio','idioma','aceitouPrivacidade','versaoPolitica','origem','criadoEm'])
+        && request.resource.data.empresa is string && request.resource.data.empresa.size() > 0 && request.resource.data.empresa.size() < 200
+        && request.resource.data.nome is string && request.resource.data.nome.size() > 0 && request.resource.data.nome.size() < 200
+        && request.resource.data.whatsapp is string && request.resource.data.whatsapp.size() < 30
+        && request.resource.data.email is string && request.resource.data.email.size() <= 150
+        && request.resource.data.inicio is timestamp
+        && request.resource.data.inicio > request.time
+        && request.resource.data.inicio < request.time + duration.value(30, 'd')
+        && request.resource.data.idioma in ['pt','en','es']
+        && request.resource.data.aceitouPrivacidade == true
+        && request.resource.data.versaoPolitica is string && request.resource.data.versaoPolitica.size() <= 20
+        && request.resource.data.origem == 'site'
+        && request.resource.data.criadoEm is timestamp
+        && request.resource.data.criadoEm > request.time - duration.value(10, 'm')
+        && request.resource.data.criadoEm < request.time + duration.value(10, 'm');
+      allow read, update, delete: if false;
+    }
+
     // Contatos exibidos no site (WhatsApp, telefone, e-mail), editados em oprtec.com.br/admin.
     // Leitura pública (o site lê pra montar os botões); escrita só pelos e-mails autorizados.
     match /siteConfig/{docId} {
