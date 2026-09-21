@@ -7,6 +7,13 @@ const nextConfig = {
   // Esconde que é Next.js no header de resposta — reduz fingerprinting trivial.
   poweredByHeader: false,
 
+  // Proteção contra versões misturadas: uma aba aberta antes de uma atualização continuava
+  // com o JavaScript antigo e, ao navegar, recebia páginas novas — foi assim que a
+  // /avaliacao apareceu com o formulário antigo, chaves de tradução cruas e sem horários.
+  // Com o id da publicação, o Next percebe a diferença e recarrega a página inteira.
+  // RAILWAY_GIT_COMMIT_SHA vem do Railway no build; fora dele fica sem id (comportamento antigo).
+  deploymentId: process.env.RAILWAY_GIT_COMMIT_SHA || undefined,
+
   async headers() {
     return [
       {
