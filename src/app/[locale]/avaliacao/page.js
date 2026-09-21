@@ -18,6 +18,8 @@ export default async function AvaliacaoPage({ params }) {
   setRequestLocale(locale);
   const usarAgenda = agendaConfigurada();
   const t = await getTranslations(usarAgenda ? "agendamento" : "avaliacao");
+  // Textos do bloco do WhatsApp são os mesmos nos dois modos e vivem em "avaliacao".
+  const ta = await getTranslations("avaliacao");
   const tw = await getTranslations("whatsapp");
   const contatos = await obterContatos();
 
@@ -39,14 +41,14 @@ export default async function AvaliacaoPage({ params }) {
       </div>
 
       <div className="mt-10 flex flex-col items-center gap-3 text-center">
-        <p className="text-slate-600">{t("whatsappTexto")}</p>
+        <p className="text-slate-600">{ta("whatsappTexto")}</p>
         <a
           href={linkWhatsApp(contatos.whatsappNumero, contatos.whatsappMensagem[locale] || tw("mensagem"))}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50"
         >
-          {t("whatsappBotao")}
+          {ta("whatsappBotao")}
         </a>
       </div>
 
