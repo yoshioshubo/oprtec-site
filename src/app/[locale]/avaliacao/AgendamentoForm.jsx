@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { gradeDoMes, mesesDaJanela } from "@/lib/calendarioMes";
 
 // Limites um pouco abaixo dos das regras do Firestore (200/200/30/150).
 const LIMITES = { empresa: 190, nome: 190, whatsapp: 25, email: 150 };
@@ -10,24 +11,28 @@ const FUSO = "America/Sao_Paulo";
 const IDIOMAS = { pt: "pt-BR", en: "en-US", es: "es" };
 
 const entrada =
-  "mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 disabled:bg-slate-50 disabled:text-slate-400";
+  "mt-1 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500";
 
-async function buscarHorarios() {
+async function buscarDias() {
   const resposta = await fetch("/api/agenda/horarios", { cache: "no-store" });
   if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
   const dados = await resposta.json();
-  return Array.isArray(dados.horarios) ? dados.horarios : [];
+  return Array.isArray(dados.dias) ? dados.dias : [];
 }
 
 const maiuscula = (texto) => texto.charAt(0).toUpperCase() + texto.slice(1);
+// Meio-dia UTC de uma data "YYYY-MM-DD": formatar em Brasília nunca muda o dia.
+const meioDia = (data) => new Date(`${data}T12:00:00Z`);
 
 export default function AgendamentoForm() {
   const t = useTranslations("agendamento");
   const locale = useLocale();
   const idioma = IDIOMAS[locale] || "pt-BR";
 
-  const [horarios, setHorarios] = useState(null); // null = carregando
+  const [dias, setDias] = useState(null); // null = carregando
   const [erroAgenda, setErroAgenda] = useState(false);
+  const [mesIndice, setMesIndice] = useState(0);
+  const [diaEscolhido, setDiaEscolhido] = useState("");
   const [horario, setHorario] = useState("");
   const [aceitou, setAceitou] = useState(false);
   const [enviando, setEnviando] = useState(false);
@@ -36,68 +41,71 @@ export default function AgendamentoForm() {
 
   useEffect(() => {
     let ativo = true;
-    buscarHorarios()
-      .then((lista) => ativo && setHorarios(lista))
+    buscarDias()
+      .then((lista) => ativo && setDias(lista))
       .catch((erro) => {
-        console.error("Erro ao carregar horários:", erro);
+        console.error("Erro ao carregar a agenda:", erro);
         if (!ativo) return;
         setErroAgenda(true);
-        setHorarios([]);
+        setDias([]);
       });
     return () => {
       ativo = false;
     };
   }, []);
 
-  // Um único campo de data e hora: um <select> agrupado por dia. Cada opção leva o dia
-  // abreviado, para o campo fechado continuar dizendo qual dia foi escolhido.
-  const grupos = useMemo(() => {
-    const dia = new Intl.DateTimeFormat(idioma, {
-      timeZone: FUSO,
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-    });
-    const curto = new Intl.DateTimeFormat(idioma, {
-      timeZone: FUSO,
-      weekday: "short",
-      day: "2-digit",
-      month: "2-digit",
-    });
-    const hora = new Intl.DateTimeFormat(idioma, {
-      timeZone: FUSO,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+  const formatos = useMemo(
+    () => ({
+      mes: new Intl.DateTimeFormat(idioma, { timeZone: "UTC", month: "long", year: "numeric" }),
+      semana: new Intl.DateTimeFormat(idioma, { timeZone: "UTC", weekday: "short" }),
+      diaLongo: new Intl.DateTimeFormat(idioma, { timeZone: "UTC", weekday: "long", day: "numeric", month: "long" }),
+      hora: new Intl.DateTimeFormat(idioma, { timeZone: FUSO, hour: "2-digit", minute: "2-digit" }),
+      completo: new Intl.DateTimeFormat(idioma, {
+        timeZone: FUSO,
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    }),
+    [idioma]
+  );
 
-    const mapa = new Map();
-    for (const iso of horarios || []) {
-      const data = new Date(iso);
-      const chave = iso.slice(0, 10);
-      if (!mapa.has(chave)) {
-        mapa.set(chave, { chave, rotulo: maiuscula(dia.format(data)), opcoes: [] });
-      }
-      mapa.get(chave).opcoes.push({
-        iso,
-        texto: `${maiuscula(curto.format(data))} · ${hora.format(data)}`,
-      });
-    }
-    return [...mapa.values()];
-  }, [horarios, idioma]);
+  const porData = useMemo(() => new Map((dias || []).map((d) => [d.data, d.horarios])), [dias]);
+  const meses = useMemo(() => mesesDaJanela((dias || []).map((d) => d.data)), [dias]);
+  const mesAtual = meses[Math.min(mesIndice, Math.max(meses.length - 1, 0))];
+  // Cabeçalho dom..sáb: 04/01/2026 foi um domingo.
+  const nomesSemana = useMemo(
+    () => Array.from({ length: 7 }, (_, i) => formatos.semana.format(meioDia(`2026-01-0${4 + i}`)).replace(".", "")),
+    [formatos]
+  );
 
-  const formatarCompleto = (iso) =>
-    new Intl.DateTimeFormat(idioma, {
-      timeZone: FUSO,
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(new Date(iso));
+  const horariosDoDia = diaEscolhido ? porData.get(diaEscolhido) || [] : [];
+  const temAlgumHorario = (dias || []).some((d) => d.horarios.length > 0);
+
+  const escolherDia = (data) => {
+    setDiaEscolhido(data);
+    setHorario("");
+    setStatus({ tipo: "", texto: "" });
+  };
+
+  const recarregar = () => {
+    buscarDias()
+      .then((lista) => {
+        setDias(lista);
+        setErroAgenda(false);
+      })
+      .catch(() => {});
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!horario) {
+      setStatus({ tipo: "erro", texto: t("escolhaHorario") });
+      return;
+    }
     if (!aceitou) {
       setStatus({ tipo: "erro", texto: t("alertaAceite") });
       return;
@@ -138,7 +146,7 @@ export default function AgendamentoForm() {
         });
         if (retorno.error === "horario-indisponivel") {
           setHorario("");
-          buscarHorarios().then(setHorarios).catch(() => {});
+          recarregar();
         }
         return;
       }
@@ -162,7 +170,7 @@ export default function AgendamentoForm() {
         <h2 className="text-2xl font-bold text-slate-900">{t("sucessoTitulo")}</h2>
         <p className="text-slate-700">
           {t("sucessoTexto", {
-            data: formatarCompleto(confirmado.inicio),
+            data: maiuscula(formatos.completo.format(new Date(confirmado.inicio))),
             email: confirmado.email,
           })}
         </p>
@@ -181,69 +189,176 @@ export default function AgendamentoForm() {
     );
   }
 
-  const semHorarios = horarios !== null && grupos.length === 0;
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium text-slate-700" htmlFor="empresa">
-          {t("empresa")}
-        </label>
-        <input id="empresa" name="empresa" type="text" required maxLength={LIMITES.empresa} autoComplete="organization" className={entrada} />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-slate-700" htmlFor="nome">
-          {t("nome")}
-        </label>
-        <input id="nome" name="nome" type="text" required maxLength={LIMITES.nome} autoComplete="name" className={entrada} />
-      </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label className="block text-sm font-medium text-slate-700" htmlFor="whatsapp">
-            {t("whatsapp")}
-          </label>
-          <input id="whatsapp" name="whatsapp" type="tel" required maxLength={LIMITES.whatsapp} autoComplete="tel" placeholder="(32) 99999-9999" className={entrada} />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-slate-700" htmlFor="email">
-            {t("email")}
-          </label>
-          <input id="email" name="email" type="email" required maxLength={LIMITES.email} autoComplete="email" className={entrada} />
-        </div>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-slate-700" htmlFor="horario">
-          {t("horario")}
-        </label>
-        <select
-          id="horario"
-          name="horario"
-          required
-          value={horario}
-          onChange={(e) => setHorario(e.target.value)}
-          disabled={!grupos.length}
-          className={entrada}
-        >
-          <option value="" disabled>
-            {horarios === null ? t("carregando") : t("horarioPlaceholder")}
-          </option>
-          {grupos.map((g) => (
-            <optgroup key={g.chave} label={g.rotulo}>
-              {g.opcoes.map((o) => (
-                <option key={o.iso} value={o.iso}>
-                  {o.texto}
-                </option>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* 1. Calendário */}
+      <fieldset>
+        <legend className="text-sm font-semibold text-slate-900">{t("passoData")}</legend>
+
+        {dias === null ? (
+          <div className="mt-3 h-72 animate-pulse rounded-xl bg-slate-100" aria-label={t("carregando")} />
+        ) : !temAlgumHorario ? (
+          <p className="mt-3 rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-900 ring-1 ring-amber-200">
+            {erroAgenda ? t("erroHorarios") : t("semHorarios")}
+          </p>
+        ) : (
+          <div className="mt-3 rounded-xl border border-slate-200 p-3 sm:p-4">
+            <div className="mb-3 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => setMesIndice((i) => Math.max(i - 1, 0))}
+                disabled={mesIndice === 0}
+                aria-label={t("mesAnterior")}
+                className="rounded-full px-3 py-1 text-lg text-slate-600 hover:bg-slate-100 disabled:invisible"
+              >
+                ‹
+              </button>
+              <p className="text-sm font-semibold capitalize text-slate-900" aria-live="polite">
+                {formatos.mes.format(meioDia(`${mesAtual}-01`))}
+              </p>
+              <button
+                type="button"
+                onClick={() => setMesIndice((i) => Math.min(i + 1, meses.length - 1))}
+                disabled={mesIndice >= meses.length - 1}
+                aria-label={t("proximoMes")}
+                className="rounded-full px-3 py-1 text-lg text-slate-600 hover:bg-slate-100 disabled:invisible"
+              >
+                ›
+              </button>
+            </div>
+
+            <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-medium uppercase text-slate-500">
+              {nomesSemana.map((nome) => (
+                <span key={nome}>{nome}</span>
               ))}
-            </optgroup>
-          ))}
-        </select>
-        <p className="mt-1 text-xs text-slate-500">
-          {semHorarios ? (erroAgenda ? t("erroHorarios") : t("semHorarios")) : t("fusoNota")}
-        </p>
-      </div>
+            </div>
+            <div className="mt-1 grid grid-cols-7 gap-1">
+              {gradeDoMes(mesAtual)
+                .flat()
+                .map((data, i) => {
+                  if (!data) return <span key={`vazio-${i}`} />;
+                  const numero = Number(data.slice(8));
+                  const horarios = porData.get(data);
+                  if (!horarios) {
+                    // Fora da janela de agendamento (passado ou além de 14 dias).
+                    return (
+                      <span key={data} className="flex aspect-square items-center justify-center rounded-lg text-sm text-slate-300">
+                        {numero}
+                      </span>
+                    );
+                  }
+                  const disponivel = horarios.length > 0;
+                  const escolhido = data === diaEscolhido;
+                  const rotulo = `${maiuscula(formatos.diaLongo.format(meioDia(data)))} — ${
+                    disponivel ? t("diaDisponivel", { quantidade: horarios.length }) : t("indisponivelLegenda")
+                  }`;
+                  return (
+                    <button
+                      key={data}
+                      type="button"
+                      disabled={!disponivel}
+                      onClick={() => escolherDia(data)}
+                      aria-pressed={escolhido}
+                      aria-label={rotulo}
+                      title={rotulo}
+                      className={`flex aspect-square items-center justify-center rounded-lg text-sm font-semibold transition ${
+                        escolhido
+                          ? "bg-emerald-600 text-white shadow ring-2 ring-emerald-600 ring-offset-2"
+                          : disponivel
+                            ? "bg-emerald-50 text-emerald-800 ring-1 ring-emerald-300 hover:bg-emerald-100"
+                            : "cursor-not-allowed bg-red-50 text-red-400 ring-1 ring-red-200"
+                      }`}
+                    >
+                      {numero}
+                    </button>
+                  );
+                })}
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-600">
+              <span className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded bg-emerald-100 ring-1 ring-emerald-400" /> {t("disponivelLegenda")}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded bg-red-50 ring-1 ring-red-300" /> {t("indisponivelLegenda")}
+              </span>
+            </div>
+          </div>
+        )}
+      </fieldset>
+
+      {/* 2. Horário do dia escolhido */}
+      {diaEscolhido && (
+        <fieldset>
+          <legend className="text-sm font-semibold text-slate-900">
+            {t("passoHorario", { dia: maiuscula(formatos.diaLongo.format(meioDia(diaEscolhido))) })}
+          </legend>
+          <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-5">
+            {horariosDoDia.map((iso) => {
+              const escolhido = iso === horario;
+              return (
+                <button
+                  key={iso}
+                  type="button"
+                  onClick={() => {
+                    setHorario(iso);
+                    setStatus({ tipo: "", texto: "" });
+                  }}
+                  aria-pressed={escolhido}
+                  className={`rounded-lg px-3 py-2 text-sm font-semibold tabular-nums transition ${
+                    escolhido
+                      ? "bg-cyan-600 text-white shadow"
+                      : "bg-white text-cyan-700 ring-1 ring-cyan-300 hover:bg-cyan-50"
+                  }`}
+                >
+                  {formatos.hora.format(new Date(iso))}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-slate-500">{t("fusoNota")}</p>
+        </fieldset>
+      )}
+
+      {/* 3. Dados */}
+      <fieldset className="space-y-4">
+        <legend className="text-sm font-semibold text-slate-900">{t("passoDados")}</legend>
+        <div>
+          <label className="block text-sm font-medium text-slate-700" htmlFor="empresa">
+            {t("empresa")}
+          </label>
+          <input id="empresa" name="empresa" type="text" required maxLength={LIMITES.empresa} autoComplete="organization" className={entrada} />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-slate-700" htmlFor="nome">
+            {t("nome")}
+          </label>
+          <input id="nome" name="nome" type="text" required maxLength={LIMITES.nome} autoComplete="name" className={entrada} />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label className="block text-sm font-medium text-slate-700" htmlFor="whatsapp">
+              {t("whatsapp")}
+            </label>
+            <input id="whatsapp" name="whatsapp" type="tel" required maxLength={LIMITES.whatsapp} autoComplete="tel" placeholder={t("whatsappExemplo")} className={entrada} />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700" htmlFor="email">
+              {t("email")}
+            </label>
+            <input id="email" name="email" type="email" required maxLength={LIMITES.email} autoComplete="email" className={entrada} />
+          </div>
+        </div>
+      </fieldset>
 
       {/* honeypot: invisivel para gente, irresistivel para bot que preenche tudo */}
       <input type="text" name="site" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+
+      {horario && (
+        <p className="rounded-lg bg-cyan-50 px-4 py-3 text-sm text-cyan-900 ring-1 ring-cyan-200">
+          {t("resumo", { data: maiuscula(formatos.completo.format(new Date(horario))) })}
+        </p>
+      )}
 
       <label className="flex items-start gap-2 text-sm text-slate-700">
         <input
@@ -269,10 +384,7 @@ export default function AgendamentoForm() {
       </label>
 
       {status.texto && (
-        <p
-          role={status.tipo === "erro" ? "alert" : "status"}
-          className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800 ring-1 ring-red-200"
-        >
+        <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800 ring-1 ring-red-200">
           {status.texto}
         </p>
       )}

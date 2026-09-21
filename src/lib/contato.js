@@ -31,6 +31,17 @@ export function normalizarWhatsApp(entrada) {
   return `55${d}`;
 }
 
+// Número no formato que o bot de WhatsApp envia: brasileiro normalizado (55 + DDD +
+// número) ou, se a pessoa digitou com "+" e outro código de país, só os dígitos (10 a 15).
+export function whatsappParaEnvio(entrada) {
+  const texto = String(entrada || "").trim();
+  if (texto.startsWith("+") && !texto.startsWith("+55")) {
+    const digitos = texto.replace(/\D/g, "");
+    return digitos.length >= 10 && digitos.length <= 15 ? digitos : null;
+  }
+  return normalizarWhatsApp(texto);
+}
+
 export function formatarWhatsApp(numero) {
   const d = String(numero || "").replace(/^55/, "");
   if (d.length === 11) return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
