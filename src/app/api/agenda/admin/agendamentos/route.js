@@ -41,7 +41,7 @@ export async function DELETE(request) {
   const contatos = await obterContatos();
   const mensagem = emailCancelamento({ nome, inicio, idioma });
   const [whats, mail] = await Promise.all([
-    enviarWhatsApp(whatsapp, whatsappCancelamento({ nome, inicio, idioma })),
+    enviarWhatsApp(whatsapp, whatsappCancelamento({ nome, inicio, idioma, whatsappOprtec: contatos.whatsappNumero })),
     email
       ? enviarEmail({ para: email, assunto: mensagem.assunto, html: mensagem.html, responderPara: contatos.email })
       : Promise.resolve({ enviado: false, motivo: "sem e-mail" }),

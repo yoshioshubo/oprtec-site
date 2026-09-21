@@ -131,7 +131,13 @@ export async function POST(request) {
     const envios = {
       "whatsapp-cliente": enviarWhatsApp(
         telefone,
-        whatsappConfirmacao({ nome: campos.nome, inicio: inicioIso, meet: evento.meet, idioma })
+        whatsappConfirmacao({
+          nome: campos.nome,
+          inicio: inicioIso,
+          meet: evento.meet,
+          idioma,
+          whatsappOprtec: contatos.whatsappNumero,
+        })
       ),
       "email-cliente": enviarEmail({
         para: campos.email,
