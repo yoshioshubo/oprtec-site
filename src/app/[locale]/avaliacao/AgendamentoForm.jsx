@@ -77,7 +77,7 @@ export default function AgendamentoForm() {
   const mesAtual = meses[Math.min(mesIndice, Math.max(meses.length - 1, 0))];
   // Cabeçalho dom..sáb: 04/01/2026 foi um domingo.
   const nomesSemana = useMemo(
-    () => Array.from({ length: 7 }, (_, i) => formatos.semana.format(meioDia(`2026-01-0${4 + i}`)).replace(".", "")),
+    () => Array.from({ length: 7 }, (_, i) => formatos.semana.format(new Date(Date.UTC(2026, 0, 4 + i, 12))).replace(".", "")),
     [formatos]
   );
 

@@ -16,4 +16,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # Credenciais de mentira só para o build montar a /avaliacao com o calendário (como
+      # no Railway). Sem elas a página cai no Tally e um erro no calendário passa batido.
       - run: npm run build
+        env:
+          GOOGLE_CLIENT_ID: ci
+          GOOGLE_CLIENT_SECRET: ci
+          GOOGLE_REFRESH_TOKEN: ci
