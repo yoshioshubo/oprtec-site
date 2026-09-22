@@ -15,7 +15,7 @@ export default async function SobrePage({ params }) {
   const valoresIds = ["respeito", "humildade", "desenvolvimento", "organizacao"];
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-16 pt-6 sm:pb-20">
+    <div className="mx-auto max-w-6xl px-6 pb-16 pt-8 sm:pb-20 sm:pt-10">
       <section className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">

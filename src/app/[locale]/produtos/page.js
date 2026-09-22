@@ -14,7 +14,7 @@ export default async function ProdutosPage({ params }) {
   const t = await getTranslations("produtos");
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-20 pt-6">
+    <div className="mx-auto max-w-6xl px-6 pb-20 pt-8 sm:pt-10">
       <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700 ring-1 ring-inset ring-cyan-200">
         {t("badge")}
       </span>
